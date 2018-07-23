@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iotek.ssm.dao.TouristDao">
+  <!-- <select id="findProvinceById" parameterType="int" resultMap="ClassResultMap" >
+		SELECT * FROM city c,province p WHERE c.pid = p.id and p.id=#{id}
+	</select> -->
+	
+	<insert id="registerTourist"  parameterType="Tourist" >
+		insert into tourist (Tname,Tpassword) values (#{Tname},#{Tpassword});
+	</insert>
+	
+	 <select id="findTouristByname" parameterType="String" resultType="Tourist" >
+	    select * from Tourist where tname = (#{name})
+	</select> 
+	
+	<!-- <resultMap type="Tourist" id="ClassResultMap">
+	   <id property="tid" column="Tid"/>
+	  <result property="Tname" column="Tname"/>
+	  <result property="Tpassword" column="Tpassword"/>
+	  <association property="Resume" javaType="Resume">
+			<id property="rid" column="rid"/>
+	  </association> 
+	</resultMap>-->
+	
+</mapper>
