@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iotek.ssm.dao.CityDao">
+	<select id="findCityById" parameterType="int" resultMap="ClassResultMap" >
+		SELECT * FROM  city c,province p where c.pid = p.id and cid=#{id}
+	</select>
+	<select id="findAllCity"   resultMap="ClassResultMap">
+		SELECT *  FROM  city c,province p where c.pid = p.id 
+	</select>
+	
+	<resultMap type="City" id="ClassResultMap">
+	<id property="cid" column="cid"/>
+	<result property="cname" column="cname"/>
+	<association property="provice" javaType="Province">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+	</association>
+</resultMap>
+	
+</mapper>

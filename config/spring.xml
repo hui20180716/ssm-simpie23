@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+	<!-- 配置spring的扫描 -->
+	<context:component-scan base-package="com.iotek.ssm.dao,com.iotek.ssm.service,com.iotek.ssm.entity"></context:component-scan>
+
+
+	<!-- 配置数据源，选用c3p0 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql:///0709"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value=""></property>
+	</bean>
+	
+	<!-- 整合mybatis -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+		<property name="configLocation" value="classpath:mybatis.xml"></property>
+		<property name="typeAliasesPackage" value="com.iotek.ssm.entity"></property>
+	</bean>
+	
+	<bean id="" class="org.mybatis.spring.mapper.MapperScannerConfigurer"><!-- 这个bean 可以实例化接口 -->
+		<!-- 配置接口的路径 -->
+		<property name="basePackage" value="com.iotek.ssm.dao"></property>       <!-- 把接口实现了 -->
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryBean"></property>
+	</bean>             
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 配置事务的advice -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置aop:config -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.iotek.ssm.service.*.*(..))" id="pointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+	</aop:config>
+	
+	
+</beans>
