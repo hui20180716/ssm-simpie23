@@ -3,7 +3,7 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/config"/>
-        <property name="context-root" value="ssm-simpie22"/>
         <property name="java-output-path" value="/ssm-simpie22/build/classes"/>
+        <property name="context-root" value="ssm-simpie23"/>
     </wb-module>
 </project-modules>

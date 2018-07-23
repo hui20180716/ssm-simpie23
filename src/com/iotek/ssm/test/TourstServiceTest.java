@@ -21,8 +21,8 @@ public class TourstServiceTest {
 	 @Test
 	public void insert() {
 		Tourist tour=new Tourist();
-		tour.setTname("的撒");
-		tour.setTpassword("cc");
+		tour.setTname("对方公司");
+		tour.setTpassword("打算");
 		int reg = ts.registerTourist(tour);
 		System.out.println(reg);
 		

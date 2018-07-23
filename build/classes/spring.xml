@@ -14,14 +14,17 @@
 	<!-- 配置spring的扫描 -->
 	<context:component-scan base-package="com.iotek.ssm.dao,com.iotek.ssm.service,com.iotek.ssm.entity"></context:component-scan>
 
+   <context:property-placeholder location="classpath:db.properties"/>
 
 	<!-- 配置数据源，选用c3p0 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-		<property name="jdbcUrl" value="jdbc:mysql:///0720"></property>
-		<property name="user" value="root"></property>
-		<property name="password" value=""></property>
+		<property name="driverClass" value="${driverClass}"></property>
+		<property name="jdbcUrl" value="${jdbcUrl}"></property>
+		<property name="user" value="${user}"></property>
+		<property name="password" value="${password}"></property>
 	</bean>
+	
+	
 	
 	<!-- 整合mybatis -->
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -34,7 +37,7 @@
 	<bean id="" class="org.mybatis.spring.mapper.MapperScannerConfigurer"><!-- 这个bean 可以实例化接口 -->
 		<!-- 配置接口的路径 -->
 		<property name="basePackage" value="com.iotek.ssm.dao"></property>       <!-- 把接口实现了 -->
-		<property name="sqlSessionFactory" ref="sqlSessionFactoryBean"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"></property>
 	</bean>             
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
