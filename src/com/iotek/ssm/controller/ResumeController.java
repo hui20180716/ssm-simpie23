@@ -26,11 +26,11 @@ public class ResumeController {
 	 * 填写简历
 	 */
 		@RequestMapping("/resume")//tourist/resume
-		public String resumeTourist(String name,String hobby) {
+		public String resumeTourist(Resume resume) {
 			
 			System.out.println("00");
-			System.out.println(name);
-			System.out.println(hobby);
+			System.out.println(resume);
+			
 			return "resume/resume2";
 		}
 	

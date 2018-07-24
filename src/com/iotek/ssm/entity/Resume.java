@@ -11,7 +11,7 @@ public class Resume {
 	private String lastjob;//上份工作
 	private int salary;//工资
 	private  String sex;//性别
-	private  String educal;//性别
+	private  String educal;//教育
 	private  String email;//邮箱
 	private  String poitics;//政治面貌
 	private  String expe;//工作经验
