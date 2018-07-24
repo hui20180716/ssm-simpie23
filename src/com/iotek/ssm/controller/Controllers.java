@@ -3,6 +3,7 @@ package com.iotek.ssm.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.iotek.ssm.entity.Resume;
 import com.iotek.ssm.entity.Tourist;
 import com.iotek.ssm.service.TouristService;
 
@@ -20,9 +21,17 @@ public class Controllers {
 	 * 登陆tourist/register
 	 * @return
 	 */
-	@RequestMapping("/loginTour")//register
-	public String loginTourist() {
-		return null;
+	@ResponseBody
+	@RequestMapping("/loginTour")//tourist/loginTour
+	public String loginTourist(String name,String password) {
+		Tourist tour = new Tourist();
+		tour.setTname(name);
+		tour.setTpassword(password);
+		String str = "0";
+		if(touristService.loginTourist(tour)) {
+			str = "1";
+		}
+		return str;
 	}
 /**
  * 注册
@@ -46,5 +55,14 @@ public class Controllers {
 		public String registerTourist2() {
 			return "resume/re01";
 		}
+		/**
+		 * 注册
+		 */
+			@RequestMapping("/resume")//tourist/resume
+			public String resumeTourist(Resume resume) {
+				System.out.println("00");
+				System.out.println(resume);
+				return "resume/re01";
+			}
 }
 	

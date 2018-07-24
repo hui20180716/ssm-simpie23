@@ -8,7 +8,13 @@ public interface TouristService{
 	 */
 	public int registerTourist(Tourist tourist);
 	/**
-	 * 登陆
+	 * 通过名字查找游客
 	 */
 	 public Tourist findTouristByname(String name);
+	 /**
+	  * 登录
+	  * @param tourist
+	  * @return
+	  */
+	public boolean loginTourist(Tourist tourist);
 }

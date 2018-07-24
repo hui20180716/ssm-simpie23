@@ -21,4 +21,9 @@ public class ResumeController {
 		return "resume/re04";
 	}
 	
+	@RequestMapping("/05")
+	public String find4() {
+		return "resume/re05";
+	}
+	
 }

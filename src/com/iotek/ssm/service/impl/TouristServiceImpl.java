@@ -29,5 +29,13 @@ public class TouristServiceImpl implements TouristService {
 	public Tourist findTouristByname(String name) {
 		return touristDao.findTouristByname(name);
 	}
-
+	@Override
+	public boolean loginTourist(Tourist tourist) {
+		boolean flag = false;
+		Tourist touris = findTouristByname(tourist.getTname());
+		if(tourist.getTpassword().equals(touris.getTpassword())) {
+			flag = true ;
+		}
+		return flag;
+	}
 }
