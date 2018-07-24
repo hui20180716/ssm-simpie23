@@ -6,13 +6,13 @@ public class Resume {
 	private String name;
 	private int age;
 	private int tel;
-	private Deprecated dept;//部门
+	private Dept dept;//部门
 	private Position posi;//职位
 	private String lastjob;//上份工作
 	private int salary;//工资
 	private  String sex;//性别
 	private  String educal;//性别
-	private  String emil;//邮箱
+	private  String email;//邮箱
 	private  String poitics;//政治面貌
 	private  String expe;//工作经验
 	private   String hobby;//爱好
@@ -40,10 +40,10 @@ public class Resume {
 	public void setTel(int tel) {
 		this.tel = tel;
 	}
-	public Deprecated getDept() {
+	public Dept getDept() {
 		return dept;
 	}
-	public void setDept(Deprecated dept) {
+	public void setDept(Dept dept) {
 		this.dept = dept;
 	}
 	public Position getPosi() {
@@ -76,11 +76,11 @@ public class Resume {
 	public void setEducal(String educal) {
 		this.educal = educal;
 	}
-	public String getEmil() {
-		return emil;
+	public String getEmail() {
+		return email;
 	}
-	public void setEmil(String emil) {
-		this.emil = emil;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPoitics() {
 		return poitics;
@@ -100,14 +100,8 @@ public class Resume {
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
-	@Override
-	public String toString() {
-		return "Resume [rid=" + rid + ", name=" + name + ", age=" + age + ", tel=" + tel + ", dept=" + dept + ", posi="
-				+ posi + ", lastjob=" + lastjob + ", salary=" + salary + ", sex=" + sex + ", educal=" + educal
-				+ ", emil=" + emil + ", poitics=" + poitics + ", expe=" + expe + ", hobby=" + hobby + "]";
-	}
-	public Resume(int rid, String name, int age, int tel, Deprecated dept, Position posi, String lastjob, int salary,
-			String sex, String educal, String emil, String poitics, String expe, String hobby) {
+	public Resume(int rid, String name, int age, int tel, Dept dept, Position posi, String lastjob, int salary,
+			String sex, String educal, String email, String poitics, String expe, String hobby) {
 		super();
 		this.rid = rid;
 		this.name = name;
@@ -119,7 +113,7 @@ public class Resume {
 		this.salary = salary;
 		this.sex = sex;
 		this.educal = educal;
-		this.emil = emil;
+		this.email = email;
 		this.poitics = poitics;
 		this.expe = expe;
 		this.hobby = hobby;
@@ -128,6 +122,11 @@ public class Resume {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Resume [rid=" + rid + ", name=" + name + ", age=" + age + ", tel=" + tel + ", dept=" + dept + ", posi="
+				+ posi + ", lastjob=" + lastjob + ", salary=" + salary + ", sex=" + sex + ", educal=" + educal
+				+ ", email=" + email + ", poitics=" + poitics + ", expe=" + expe + ", hobby=" + hobby + "]";
+	}
 	
-
 }

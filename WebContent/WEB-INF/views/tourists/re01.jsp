@@ -20,7 +20,7 @@ div{
 	<div>
 		<h1>欢迎加入我们</h1>
 		<a href="<%=request.getContextPath()%>/resume/02">java工程师</a> <br>
-		<a			href="<%=request.getContextPath()%>/resume/03">人事</a>
+		<a href="<%=request.getContextPath()%>/resume/03">人事</a>
 	</div>
 </body>
 </html>

@@ -49,20 +49,12 @@ public class Controllers {
 		return num+"";
 	}
 	/**
-	 * 注册
+	 * 注册或登录成功后跳转
 	 */
 		@RequestMapping("/register2")//Tourist/String  Tourist/register
 		public String registerTourist2() {
-			return "resume/re01";
+			return "tourists/re01";
 		}
-		/**
-		 * 注册
-		 */
-			@RequestMapping("/resume")//tourist/resume
-			public String resumeTourist(Resume resume) {
-				System.out.println("00");
-				System.out.println(resume);
-				return "resume/re01";
-			}
+		
 }
 	
