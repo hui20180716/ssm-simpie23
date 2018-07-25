@@ -13,4 +13,8 @@ public interface ResumeService {
 	 * 修改简历
 	 */
 	public int updateResume(Resume resum);
+	/**
+	 * 通过id 查找简历
+	 */
+	public Resume findResumeById(int id);
 }

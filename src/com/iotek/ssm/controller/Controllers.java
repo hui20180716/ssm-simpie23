@@ -28,19 +28,20 @@ public class Controllers {
 	@ResponseBody
 	@RequestMapping("/loginTour")//tourist/loginTour
 	public String loginTourist(String name,String password,HttpSession session) {
-		System.out.println(111);
+		System.out.println("登录成功");
 		Tourist tour = new Tourist();
 		tour.setTname(name);
 		tour.setTpassword(password);
-		System.out.println(tour);
+	//	System.out.println(tour);
 	Boolean b =	touristService.loginTourist(tour);
 		System.out.println(b);
 		String str = "0";
 		if(b) {
 			str = "1";
-		int	num = touristService.findTouristByname(name).getTid();
-	          session.setAttribute("tid", num);
-	          System.out.println(num);
+		 
+			Tourist tour2 = touristService.findTouristByname(name);
+	          session.setAttribute("Tourist", tour2);
+	          System.out.println("登录时查到的游客信息"+tour2);;
 			
 		}
 		System.out.println(str);
@@ -52,15 +53,15 @@ public class Controllers {
 	@RequestMapping("/register")//Tourist/String  Tourist/register
 	@ResponseBody
 	public String registerTourist(String name,String password,HttpSession session) {
-		System.out.println(12);
+		System.out.println("注册成功");
 		System.out.println(name+","+password);
 		Tourist t = new Tourist();
 		t.setTname(name);
         t.setTpassword(password);
         int num = touristService.registerTourist(t);
         if(num>0) {
-          num = touristService.findTouristByname(name).getTid();
-          session.setAttribute("tid", num);
+           Tourist tourist = touristService.findTouristByname(name);
+           session.setAttribute("Tourist", tourist);;
         }
         System.out.println(num);
 		return num+"";
@@ -70,7 +71,8 @@ public class Controllers {
 	 */
 		@RequestMapping("/register2")//Tourist/String  Tourist/register
 		public String registerTourist2(String id,HttpServletRequest req) {
-			System.out.println(id);
+			System.out.println("登录或注册成功");
+			//System.out.println(id);
 			req.setAttribute("id", id);
 			return "tourists/welcome";
 		}

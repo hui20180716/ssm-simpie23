@@ -5,4 +5,7 @@
 	<insert id="insertTest" parameterType="Tests">
 	    insert into Test (date) values (#{date})
 	</insert>
+	<update id="updateTourist">
+	
+	</update>
 </mapper>

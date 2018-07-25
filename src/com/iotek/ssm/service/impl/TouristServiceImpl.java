@@ -39,4 +39,17 @@ public class TouristServiceImpl implements TouristService {
 		}
 		return flag;
 	}
+
+	@Override
+	public Tourist findTouristById(int id) {
+		
+		return touristDao.findTouristById(id);
+	}
+
+	@Override
+	public int updateTourist(Tourist tour) {
+		
+		return touristDao.updateTourist(tour);
+	}
+	
 }

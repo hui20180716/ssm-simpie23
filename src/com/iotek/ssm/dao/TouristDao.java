@@ -26,4 +26,8 @@ public interface TouristDao {
 	 * 修改游客信息
 	 */
 	public int updateTourist(Tourist tourist);
+	/**
+	 * 通过id查找游客
+	 */
+	 public Tourist findTouristById(int id);
 }

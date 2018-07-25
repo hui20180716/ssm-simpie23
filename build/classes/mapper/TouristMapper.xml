@@ -10,17 +10,27 @@
 		insert into tourist (Tname,Tpassword) values (#{Tname},#{Tpassword});
 	</insert>
 	
-	 <select id="findTouristByname" parameterType="String" resultType="Tourist" >
-	    select * from Tourist where tname = (#{name})
+	 <select id="findTouristByname" parameterType="String" resultMap="ClassResultMap" >
+	    select *
+	     from Tourist t ,resume r where tname = (#{name}) and t.rid = r.rid
 	</select> 
+	<select id="findTouristById" parameterType="int"  resultMap="ClassResultMap">
+	    select * from Tourist 
+	    where tid = (#{tId})
+	</select>
 	
-	<!-- <resultMap type="Tourist" id="ClassResultMap">
-	   <id property="tid" column="Tid"/>
-	  <result property="Tname" column="Tname"/>
+	
+	<update id="updateTourist"  parameterType="Tourist">
+	   update tourist set Tname=#{Tname}, Tpassword=#{Tpassword},rid=#{resume.rid} where Tid=#{Tid}
+	</update>
+	 <resultMap type="Tourist" id="ClassResultMap">
+	   <id property="tid" column="Tid"/>  
+	  <result property="Tname" column="Tname"/> 
 	  <result property="Tpassword" column="Tpassword"/>
-	  <association property="Resume" javaType="Resume">
+	  <association property="resume" javaType="Resume">
 			<id property="rid" column="rid"/>
+			
 	  </association> 
-	</resultMap>-->
+	</resultMap>
 	
 </mapper>

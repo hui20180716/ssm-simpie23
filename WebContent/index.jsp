@@ -24,17 +24,20 @@
 		 datqatype:"text",
 		 data:{"name":a,"password":b},
 		 success:function(data){
-			if(data=="-1")
+			 
+			if(data=="-1"){
+				
 			 $("span").text("用户名已经被注册")
-			else if(data=="0"){
+			}else if(data=="0"){
 				alert("注册失败");
-			}else
+			}else{
 				alert("注册成功");
-			      alert(data);
-			window.location.href="<%=request.getContextPath()%>/tourist/register2?id="+data
+				$("form").attr("action","<%=request.getContextPath()%>/tourist/register2") 
+				$("form").submit();
+			<%-- window.location.href="<%=request.getContextPath()%>/tourist/register2?id="+data --%>
 			
 		 }
-	 })}
+	 }})}
 	  })
 	   $("#submit2").click(function(){
 	  var a = $("input[name='name']").val()
@@ -47,7 +50,9 @@
 		 success:function(data){
 		 if(data=="1"){
 				alert("登录成功");
-			window.location.href="<%=request.getContextPath()%>/tourist/register2"
+			$("form").attr("action","<%=request.getContextPath()%>/tourist/register2") 
+			$("form").submit();
+			<%-- window.location.href="<%=request.getContextPath()%>/tourist/register2" --%>
 			}else
 				alert("登录失败");
 		 }

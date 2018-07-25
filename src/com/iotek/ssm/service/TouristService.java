@@ -17,4 +17,12 @@ public interface TouristService{
 	  * @return
 	  */
 	public boolean loginTourist(Tourist tourist);
+	/**
+	 * 通过id查找游客
+	 */
+	 public Tourist findTouristById(int id);
+	 /**
+	    * 通过id查找游客
+		 */
+	 public int updateTourist(Tourist tour);
 }
