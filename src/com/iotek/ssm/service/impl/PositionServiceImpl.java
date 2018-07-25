@@ -3,11 +3,12 @@ package com.iotek.ssm.service.impl;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.iotek.ssm.dao.PositionDao;
 import com.iotek.ssm.entity.Position;
 import com.iotek.ssm.service.PositionService;
-
+@Service
 public class PositionServiceImpl implements PositionService{
 	
 	@Autowired

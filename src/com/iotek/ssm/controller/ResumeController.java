@@ -1,5 +1,6 @@
 package com.iotek.ssm.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.iotek.ssm.entity.Dept;
 import com.iotek.ssm.entity.Resume;
 import com.iotek.ssm.entity.Tourist;
+import com.iotek.ssm.service.DeptService;
 import com.iotek.ssm.service.ResumeService;
 import com.iotek.ssm.service.TouristService;
 
@@ -22,6 +25,8 @@ public class ResumeController {
 	private ResumeService resumeService;
 	@Autowired
 	private TouristService touristService;
+	@Autowired
+	private DeptService deptService;
 	
 	@RequestMapping("/02")
 	public String find2() {
@@ -37,8 +42,9 @@ public class ResumeController {
 	 * @return
 	 */
 	@RequestMapping("/04")
-	public String find4() {
-		
+	public String find4(HttpServletRequest req) {
+		ArrayList<Dept> depts = deptService.findAllDept();
+		req.setAttribute("depts", depts);
 		return "resume/resume";
 	}
 	/**
