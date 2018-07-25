@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iotek.ssm.dao.EmployeesDao">
+    <select id="findAllEmployees" resultType="Employees">
+	   select  * from Employees
+	</select>
+	
+	<insert id="insertEmployees">
+	    insert into Employees (name,password,createtime,did,pid,sid,aid,rid,tid,said,oid,status) 
+	    values (#{name},#{password},#{createtime},#{dept.dId},#{posi.pId},#{salary.sid},
+	    #{atten.aid},#{resume.rid},#{train.tid},#{salaryAbout.sid},#{overtime.oid},#{status});                                                        
+	</insert>
+</mapper>

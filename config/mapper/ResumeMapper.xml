@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iotek.ssm.dao.ResumeDao">
+	 <select id="findResumeById" parameterType="int" resultType="Resume" >
+	    select * from Resume where rid = (#{rid})
+	</select> 
+	<select id="findAllResume" resultType="Resume" >
+	    select * from Resume 
+	</select> 
+	<insert id="insertResumeByid">
+	    insert into Resume (name,age,tel,did,pid,lastjob,salary,sex,educal,email,poil,expe,hobby) 
+	    values (#{name},#{age},#{tel},#{dept.dId},#{posi.pId},#{lastjob},#{salary},#{sex},#{educal},#{email},#{poitics},#{expe},#{hobby});                                                        
+	</insert>
+	<update id="updateResumeByid">
+	   	  update Resume set name=#{name},age=#{age},tel=#{tel},did=#{dept.dId},pid=#{posi.pId},lastjob=#{lastjob},salary=#{salary},
+	   	  sex=#{sex},educal=#{educal},email=#{email},poil=#{poitics},expe=#{expe},hobby=#{hobby} where rid =#{rid}
+	</update>
+</mapper>
