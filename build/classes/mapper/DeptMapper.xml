@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iotek.ssm.dao.DeptDao">
+    <select id="findAllDept" resultMap="ClassResultMap">
+	   select  * 
+	   from Dept d,Position p 
+	   where d.did=p.deid
+	</select>
+	<select id="findDeptById" resultMap="ClassResultMap" parameterType="int">
+	   select  * 
+	   from Dept d,Position p
+	    where did = (#{dId}) and d.did=p.deid
+	</select>
+	<resultMap type="Dept" id="ClassResultMap">
+	    <id property="dId" column="did"/>
+	    <result property="dName" column="dname"/>
+	   <collection property="positionss" ofType="Position">
+			<id property="pId" column="Pid"/>
+			<result property="pName" column="pname"/>
+	    </collection> 
+	</resultMap>
+</mapper>
