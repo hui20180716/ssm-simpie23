@@ -8,9 +8,16 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
   $(function(){
+	  var reg=/^[a-zA-Z][\w]{6,30}$/;
 	  $("#submit1").click(function(){
 	  var a = $("input[name='name']").val()
 	  var b = $(":password").val()
+	  
+	  if(!reg.test(a)){
+		  alert("错误：用户名长度不能少于6个字符并且第一个字母为字母"); 
+	  }else if(!reg.test(b)){
+		  alert("错误：密码为字母、数字、符号且大于6并且第一个字母为字母");
+		  }else{
 	 $.ajax({
 		 url:"tourist/register",
 		 type:"post",
@@ -19,13 +26,15 @@
 		 success:function(data){
 			if(data=="-1")
 			 $("span").text("用户名已经被注册")
-			else if(data=="1"){
-				alert("注册成功");
-			window.location.href="<%=request.getContextPath()%>/tourist/register2"
-			}else
+			else if(data=="0"){
 				alert("注册失败");
+			}else
+				alert("注册成功");
+			      alert(data);
+			window.location.href="<%=request.getContextPath()%>/tourist/register2?id="+data
+			
 		 }
-	 })
+	 })}
 	  })
 	   $("#submit2").click(function(){
 	  var a = $("input[name='name']").val()

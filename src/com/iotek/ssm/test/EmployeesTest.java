@@ -32,7 +32,7 @@ public class EmployeesTest {
 //		String time=formatter.format(da);
 //		Date date=formatter.parse(time);	
 	    em.setCreateTime(da);
-	    
+	    em.setStatus(0);
 		int inser = employeesDao.insertEmployees(em);
 		System.out.println(inser);	
 	}

@@ -25,7 +25,11 @@ public interface ResumeDao {
     public int deleteResumeById(int id);
     
     /**
-	 * 添加简历
+	 * 添加简历 truncate
 	 */
     public int insertResumeByid(Resume resum);
+    /**
+     * 查询数据库中最大的id
+     */
+    public int selectMaxId();
  }

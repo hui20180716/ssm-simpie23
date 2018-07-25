@@ -9,11 +9,14 @@
 	    select * from Resume 
 	</select> 
 	<insert id="insertResumeByid">
-	    insert into Resume (name,age,tel,did,pid,lastjob,salary,sex,educal,email,poil,expe,hobby) 
-	    values (#{name},#{age},#{tel},#{dept.dId},#{posi.pId},#{lastjob},#{salary},#{sex},#{educal},#{email},#{poitics},#{expe},#{hobby});                                                        
+	    insert into Resume (name,age,tel,did,pid,lastjob,salary,sex,educal,email,poil,expe,hobby,createTime) 
+	    values (#{name},#{age},#{tel},#{dept.dId},#{posi.pId},#{lastjob},#{salary},#{sex},#{educal},#{email},#{poitics},#{expe},#{hobby},#{createtime})                                                        
 	</insert>
 	<update id="updateResumeByid">
-	   	  update Resume set name=#{name},age=#{age},tel=#{tel},did=#{dept.dId},pid=#{posi.pId},lastjob=#{lastjob},salary=#{salary},
+	   	  update Resume set name=#{name},age=#{age},tel=#{tel},did=#{dept.dId},pid=#{posi.pId},lastjob=#{lastjob},salary=#{salary},createTime=#{createtime},
 	   	  sex=#{sex},educal=#{educal},email=#{email},poil=#{poitics},expe=#{expe},hobby=#{hobby} where rid =#{rid}
 	</update>
+	<select id="selectMaxId" resultType="int">
+	  select max(rid) from resume;
+	</select>
 </mapper>

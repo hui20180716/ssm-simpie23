@@ -1,6 +1,7 @@
 package com.iotek.ssm.test;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,8 +38,10 @@ public class ResumeDaoTest {
 	@Test
 	public void updateResumeByid() {
 		Resume resum = new Resume();
-		resum.setRid(1);
+		resum.setRid(6);
 		resum.setName("cc");
+		Date de = new Date();
+		resum.setCreatetime(de);
 		resum.setAge(12);
 			Dept dept = new Dept();
 			dept.setdId(1);
@@ -66,6 +69,8 @@ public class ResumeDaoTest {
 	@Test
 	public void insertResumeByid() {
 		Resume resum = new Resume();
+		Date de = new Date();
+		resum.setCreatetime(de);
 		resum.setAge(12);
 			Dept dept = new Dept();
 			dept.setdId(1);
@@ -85,4 +90,10 @@ public class ResumeDaoTest {
 		int resume = resumeDao.insertResumeByid(resum);
 		System.out.println(resume);
 }
+	
+	@Test
+	public void findMaxId() {
+		int MaxId = resumeDao.selectMaxId();
+		System.out.println(MaxId);
+	}
 }

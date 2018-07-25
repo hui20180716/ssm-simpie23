@@ -1,9 +1,13 @@
 package com.iotek.ssm.entity;
+
+import java.util.Date;
+
 //简历表
 public class Resume {
 
 	private int rid;
 	private String name;
+	private Date createtime;//简历创建时间
 	private int age;
 	private int tel;
 	private Dept dept;//部门
@@ -100,11 +104,26 @@ public class Resume {
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
-	public Resume(int rid, String name, int age, int tel, Dept dept, Position posi, String lastjob, int salary,
-			String sex, String educal, String email, String poitics, String expe, String hobby) {
+	
+	public Date getCreatetime() {
+		return createtime;
+	}
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
+	@Override
+	public String toString() {
+		return "Resume [rid=" + rid + ", name=" + name + ", createtime=" + createtime + ", age=" + age + ", tel=" + tel
+				+ ", dept=" + dept + ", posi=" + posi + ", lastjob=" + lastjob + ", salary=" + salary + ", sex=" + sex
+				+ ", educal=" + educal + ", email=" + email + ", poitics=" + poitics + ", expe=" + expe + ", hobby="
+				+ hobby + "]";
+	}
+	public Resume(int rid, String name, Date createtime, int age, int tel, Dept dept, Position posi, String lastjob,
+			int salary, String sex, String educal, String email, String poitics, String expe, String hobby) {
 		super();
 		this.rid = rid;
 		this.name = name;
+		this.createtime = createtime;
 		this.age = age;
 		this.tel = tel;
 		this.dept = dept;
@@ -121,12 +140,6 @@ public class Resume {
 	public Resume() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public String toString() {
-		return "Resume [rid=" + rid + ", name=" + name + ", age=" + age + ", tel=" + tel + ", dept=" + dept + ", posi="
-				+ posi + ", lastjob=" + lastjob + ", salary=" + salary + ", sex=" + sex + ", educal=" + educal
-				+ ", email=" + email + ", poitics=" + poitics + ", expe=" + expe + ", hobby=" + hobby + "]";
 	}
 	
 }

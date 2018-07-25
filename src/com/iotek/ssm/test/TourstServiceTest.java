@@ -27,5 +27,14 @@ public class TourstServiceTest {
 		System.out.println(reg);
 		
 	}
+	 @Test
+		public void login() {
+			Tourist tour=new Tourist();
+			tour.setTname("a");
+			tour.setTpassword("bb");
+			boolean reg = ts.loginTourist(tour);
+			System.out.println(reg);
+			
+		}
 
 }

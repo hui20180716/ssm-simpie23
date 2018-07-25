@@ -7,15 +7,15 @@ public class Employees {
 	private int id;
 	private String name;
 	private String password;
-	private Date createTime;
-	private Dept dept;// 部门 多对一
-	private Position posi;// 职位 一对一
-	private Salary salary;// 薪资 一对一
-	private Attendance atten;// 考勤表
-	private Resume resume;// 简历
-	private Train train;// 培训
-	private SalaryAbout salaryAbout;// 奖惩
-	private Overtime overtime;// 加班
+	private Date createTime ;
+	private Dept dept = new Dept();// 部门 多对一
+	private Position posi = new Position();// 职位 一对一
+	private Salary salary = new Salary();// 薪资 一对一
+	private Attendance atten = new Attendance();// 考勤表
+	private Resume resume = new Resume();// 简历
+	private Train train = new Train();// 培训
+	private SalaryAbout salaryAbout = new SalaryAbout();// 奖惩
+	private Overtime overtime = new Overtime();// 加班
 	private int status;// 1:在职；0:离职
 	public int getId() {
 		return id;

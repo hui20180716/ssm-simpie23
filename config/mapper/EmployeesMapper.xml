@@ -8,7 +8,7 @@
 	
 	<insert id="insertEmployees">
 	    insert into Employees (name,password,createtime,did,pid,sid,aid,rid,tid,said,oid,status) 
-	    values (#{name},#{password},#{createtime},#{dept.dId},#{posi.pId},#{salary.sid},
-	    #{atten.aid},#{resume.rid},#{train.tid},#{salaryAbout.sid},#{overtime.oid},#{status});                                                        
+	    values (#{name},#{password},#{createTime},#{dept.dId},#{posi.pId},#{salary.sId},
+	    #{atten.aid},#{resume.rid},#{train.tId},#{salaryAbout.saId},#{overtime.oId},#{status});                                                        
 	</insert>
 </mapper>

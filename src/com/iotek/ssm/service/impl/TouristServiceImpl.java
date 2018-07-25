@@ -33,7 +33,8 @@ public class TouristServiceImpl implements TouristService {
 	public boolean loginTourist(Tourist tourist) {
 		boolean flag = false;
 		Tourist touris = findTouristByname(tourist.getTname());
-		if(tourist.getTpassword().equals(touris.getTpassword())) {
+		
+		if(touris!=null&& tourist.getTpassword().equals(touris.getTpassword())) {
 			flag = true ;
 		}
 		return flag;

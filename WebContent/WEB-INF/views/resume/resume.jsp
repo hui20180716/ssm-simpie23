@@ -31,7 +31,7 @@
 <body>
 	<form action="<%=request.getContextPath()%>/resume/resume"
 		method="get">
-		<input name="rid" value="1">
+		<input name="rid" value="-1" type = "hidden">
 		<table>
 			<tr>
 				<td>简历</td>
@@ -43,7 +43,7 @@
 				<td>真实姓名</td>
 				<td><input name="name" type="text"></td>
 				<td>性别</td>
-				<td><input type="radio" name="sex" value="男" /><label>男</label>
+				<td><input type="radio" name="sex" value="男"  checked="true"/><label>男</label>
 					<input type="radio" name="sex" value="女" /><label>女</label></td>
 			</tr>
 			<tr>
