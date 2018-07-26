@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<td>真实姓名</td>
-				<td><input name="name" type="text" value = ${requestScope.resume.name }></td>
+				<td><input name="name" type="text" value = ${requestScope.resume.name } required="required"></td>
 				<td>性别</td>
 				<c:if test="${requestScope.resume.sex=='男' }">
 				<td><input type="radio" name="sex" value="男"  checked="true"/><label>男</label>
@@ -48,7 +48,7 @@
 			</tr>
 			<tr>
 				<td>年龄</td>
-				<td><input name="age" type="number" value = ${requestScope.resume.age } ></td>
+				<td><input name="age" type="number" value = ${requestScope.resume.age } required="required"></td>
 				<td>学历</td>
 				<td><select name="educal">
 				<option value=" ${requestScope.resume.educal }"> ${requestScope.resume.educal }</option>
@@ -61,9 +61,9 @@
 			</tr>
 			<tr>
 				<td>联系方式</td>
-				<td><input type="number" name="tel"  value = ${requestScope.resume.tel }></td>
+				<td><input type="number" name="tel"  value = ${requestScope.resume.tel } required="required"></td>
 				<td>e-mail</td>
-				<td><input type="email" name="email" value = ${requestScope.resume.email }></td>
+				<td><input type="email" name="email" value = ${requestScope.resume.email } required="required"></td>
 			</tr>
 			<tr>
 				<td>应聘职位</td>
@@ -93,9 +93,9 @@
 			</tr>
 			<tr>
 				<td>工作经验</td>
-				<td><input name="expe" type="text" value = "${requestScope.resume.expe}"></td>
+				<td><input name="expe" type="text" value = "${requestScope.resume.expe}" required="required"></td>
 				<td>上份工作</td>
-				<td><input name="lastjob" type="text" value = "${requestScope.resume.lastjob}" ></td>
+				<td><input name="lastjob" type="text" value = "${requestScope.resume.lastjob}" required="required" ></td>
 			</tr>
 			<tr>
 				<td>期望薪资</td>
@@ -108,7 +108,7 @@
 						<option value="10000以上">10000以上</option>
 				</select></td>
 				<td>兴趣爱好</td>
-				<td><input name="hobby" type="text" value = "${requestScope.resume.hobby}"></td>
+				<td><input name="hobby" type="text" value = "${requestScope.resume.hobby}" required="required"></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="保存"></td>

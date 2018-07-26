@@ -8,14 +8,16 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
   $(function(){
+	  
 	  var reg=/^[a-zA-Z][\w]{6,30}$/;
 	  $("#submit1").click(function(){
 	  var a = $("input[name='name']").val()
 	  var b = $(":password").val()
-	  if(!reg.test(a)){
-		  alert("错误：用户名长度不能少于6个字符并且第一个字母为字母"); 
+	  alert(a.length)
+	  if((a.length>10)&&(a.length==0)){
+		  alert("错误：用户名长度必须大于0小于10"); 
 	  }else if(!reg.test(b)){
-		  alert("错误：密码为字母、数字、符号且大于6并且第一个字母为字母");
+		  alert("错误：密码为字母、数字、符号且大于6小于30并且第一个字母为字母");
 		  }else{
 	 $.ajax({
 		 url:"tourist/register",
@@ -70,7 +72,7 @@
 				</tr>
 				<tr>
 					<td>用户名：</td>
-					<td><input name="name" id="name"  required="required"></td>
+					<td><input name="name" id="name"  required="required" maxlength="11"></td>
 				</tr>
 				<tr>
 					<td>密码</td>

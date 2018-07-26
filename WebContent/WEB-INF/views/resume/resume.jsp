@@ -35,14 +35,14 @@
 			</tr>
 			<tr>
 				<td>真实姓名</td>
-				<td><input name="name" type="text"></td>
+				<td><input name="name" type="text" required="required"></td>
 				<td>性别</td>
 				<td><input type="radio" name="sex" value="男"  checked="true"/><label>男</label>
 					<input type="radio" name="sex" value="女" /><label>女</label></td>
 			</tr>
 			<tr>
 				<td>年龄</td>
-				<td><input name="age" type="number"></td>
+				<td><input name="age" type="number" required="required"></td>
 				<td>学历</td>
 				<td><select name="educal">
 						<option value="学历">学历</option>
@@ -54,9 +54,9 @@
 			</tr>
 			<tr>
 				<td>联系方式</td>
-				<td><input type="number" name="tel"></td>
+				<td><input type="number" name="tel" required="required"></td>
 				<td>e-mail</td>
-				<td><input type="email" name="email"></td>
+				<td><input type="email" name="email" required="required"></td>
 			</tr>
 			<tr>
 				<td>应聘职位</td>
@@ -83,9 +83,9 @@
 			</tr>
 			<tr>
 				<td>工作经验</td>
-				<td><input name="expe" type="text"></td>
+				<td><input name="expe" type="text" required="required"></td>
 				<td>上份工作</td>
-				<td><input name="lastjob" type="text"></td>
+				<td><input name="lastjob" type="text" required="required"></td>
 			</tr>
 			<tr>
 				<td>期望薪资</td>
@@ -97,7 +97,7 @@
 						<option value="20000以上">20000以上</option>
 				</select></td>
 				<td>兴趣爱好</td>
-				<td><input name="hobby" type="text"></td>
+				<td><input name="hobby" type="text" required="required"></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="保存"></td>

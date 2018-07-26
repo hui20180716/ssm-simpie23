@@ -124,5 +124,14 @@ public class Controllers {
 				    return "false";
 			} 
 			}
+		/**
+		 * 投递简历  tourist/setResume 就是把自己的简历信息部分发投递表中 
+		 */
+		@RequestMapping("setResume")
+		public String setResume() {
+			System.out.println("投递简历");
+			
+			return "tourists/updatepassword";
+			}
 }
 	

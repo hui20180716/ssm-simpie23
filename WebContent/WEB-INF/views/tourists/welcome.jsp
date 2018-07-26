@@ -28,6 +28,7 @@
 		<a href = "<%=request.getContextPath()%>/resume/04">创建简历</a> <br>
 		<a href = "<%=request.getContextPath()%>/resume/updateResume">查看/修改简历</a><br> 
 		<a href = "<%=request.getContextPath()%>/tourist/updatePassword">修改登录密码</a> <br>
+		<a href = "<%=request.getContextPath()%>/tourist/setResume">投递简历</a> <br>
 	    <a href = "<%=request.getContextPath()%>/index.jsp" ><input type = "button" value = "退出" id = "a4"/></a> <br>
 	</div>                                           
 </body>
