@@ -4,17 +4,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iotek.ssm.entity.Dept;
-import com.iotek.ssm.entity.Resume;
 import com.iotek.ssm.entity.Tourist;
 import com.iotek.ssm.service.DeptService;
 import com.iotek.ssm.service.TouristService;
 
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -97,5 +93,36 @@ public class Controllers {
 			System.out.println("查看所有招聘信息");
 			return "tourists/re01";
 		}
+		/**
+		 * 修改密码  tourist/ tourist/updatepassword2
+		 */
+		@RequestMapping("updatePassword")
+		public String updatepassword() {
+			System.out.println("修改密码1");
+			return "tourists/updatepassword";
+			}
+		/**
+		 * 修改密码 data:{"password":a,"newPassword":b}tourist/updatepassword2
+		 */
+		@RequestMapping("updatepassword2")
+		@ResponseBody
+		public String updatepassword2(String password ,String newPassword,HttpSession session  ) {
+			System.out.println("修改游客密码验证2");
+			Tourist tour =(Tourist)session.getAttribute("Tourist");
+			if(tour.getTpassword().equals(password)) {
+				tour.setTpassword(newPassword);
+				System.out.println("修改后的游客密码"+newPassword);
+				int res = touristService.updateTourist(tour);
+				Tourist tourist = touristService.findTouristById(tour.getTid());
+				System.out.println(tourist);
+				if(res==1) {
+					return "true"; 
+				}else {
+					return "false";
+				}
+			}else {
+				    return "false";
+			} 
+			}
 }
 	

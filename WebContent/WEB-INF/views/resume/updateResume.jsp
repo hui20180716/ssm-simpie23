@@ -20,24 +20,31 @@
 </script>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/resume/resume"
+	<form action="<%=request.getContextPath()%>/resume/update2Resume"
 		method="get">
-		<input name="rid" value="-1" type = "hidden">
+		
 		<table>
 		
 			<tr>
 				<td>简历</td>
 				<td></td>
-				<td></td>
+				<td><input name="rid"  value = "${requestScope.resume.rid }" type = "hidden"/></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>真实姓名</td>
 				<td><input name="name" type="text" value = ${requestScope.resume.name }></td>
 				<td>性别</td>
-				<c:if>
+				<c:if test="${requestScope.resume.sex=='男' }">
 				<td><input type="radio" name="sex" value="男"  checked="true"/><label>男</label>
-					<input type="radio" name="sex" value="女" /><label>女</label></td>
+					<input type="radio" name="sex" value="女" /><label>女</label>
+				</td>
+				</c:if>
+				<c:if test="${requestScope.resume.sex=='女' }">
+				<td><input type="radio" name="sex" value="男"  /><label>男</label>
+					<input type="radio" name="sex" value="女"  checked="true"/><label>女</label>
+				</td>
+				</c:if>
 			</tr>
 			<tr>
 				<td>年龄</td>
@@ -60,14 +67,14 @@
 			</tr>
 			<tr>
 				<td>应聘职位</td>
-				<td><select id="dept" name="dept.did">
-				     <option value="0">${requestScope.resume.dept.dName}</option>
+				<td><select id="dept" name="dept.dId">
+				     <option value="${requestScope.resume.dept.dId}">${requestScope.resume.dept.dName}</option>
 						<option value="0">--请选择部门--</option>
 						<c:forEach items="${sessionScope.depts}" var="dept" >
 		 		          <option value="${dept.dId}">${dept.dName}</option>
     		            </c:forEach>
-    				</select> <select id="position" name="posi.pid">
-				        <option value="0">${requestScope.resume.posi.pName}</option>
+    				</select> <select id="position" name="posi.pId">
+				        <option value="${requestScope.resume.posi.pId}">${requestScope.resume.posi.pName}</option>
 				        <option value="0">--请选择职位--</option>
 						<c:forEach items="${sessionScope.depts}" var="dept" >
 			               <c:forEach items="${dept.positionss}" var="posi" >
@@ -76,7 +83,7 @@
 		                </c:forEach> 
 				</select></td>
 				<td>政治面貌</td>
-				<td><select name="positics">
+				<td><select name="poitics">
 				        <option value="${requestScope.resume.poitics}">${requestScope.resume.poitics}</option>
 						<option value="普通群众">普通群众</option>
 						<option value="团员">团员</option>
@@ -93,12 +100,12 @@
 			<tr>
 				<td>期望薪资</td>
 				<td><select name="salary">
-				        <option value="${requestScope.resume.lastjob}">${requestScope.resume.lastjob}</option>
-						<option value="1">3000-5000</option>
-						<option value="2">5000-70000</option>
-						<option value="3">7000-10000</option>
-						<option value="4">7000-10000</option>
-						<option value="5">10000以上</option>
+				        <option value="${requestScope.resume.salary}">${requestScope.resume.salary}</option>
+						<option value="3000-5000">3000-5000</option>
+						<option value="5000-70000">5000-70000</option>
+						<option value="7000-10000">7000-10000</option>
+						<option value="7000-10000">7000-10000</option>
+						<option value="10000以上">10000以上</option>
 				</select></td>
 				<td>兴趣爱好</td>
 				<td><input name="hobby" type="text" value = "${requestScope.resume.hobby}"></td>

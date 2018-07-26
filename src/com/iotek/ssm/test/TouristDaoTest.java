@@ -45,7 +45,7 @@ public class TouristDaoTest {
  }
  @Test
  public void findTById() {
-	 Tourist to = tourist.findTouristById(49);
+	 Tourist to = tourist.findTouristById(55);
 	 System.out.println(to);
  }
  

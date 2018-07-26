@@ -64,6 +64,7 @@ public class ResumeController {
 	 */
 	@RequestMapping("/resume") // tourist/resume
 	public String resumeTourist(Resume resume, HttpSession session) {
+		System.out.println("收到填写的id");
 		System.out.println("从简历中获取的简历信息" + resume);
 		Date date = new Date();
 		resume.setCreatetime(date);
@@ -75,8 +76,9 @@ public class ResumeController {
 		resume.setDept(dept);
 		resume.setPosi(posi);
 		System.out.println("从数据库中获取完整部门和职位的简历信息" + resume);
-		int a = resumeService.addResume(resume);
+		int a = resumeService.addResume(resume);//把简历填入到数据库中
 		Tourist tour = (Tourist) session.getAttribute("Tourist");
+		System.out.println("session域对象中还有tourist"+tour);
 		Resume resume2 = resumeService.findResumeById(a);// 完整的简历信息
 		System.out.println("把id加入的完整简历信息" + resume2);
 		tour.setResume(resume2); // 把简历表填入游客表中
@@ -111,6 +113,28 @@ public class ResumeController {
 			req.setAttribute("flage","true" );
 		  return "tourists/welcome";
 		}
+	}
+	/**
+	 * 修改简历后包存到数据库中
+	 */
+	@RequestMapping("/update2Resume") // resume/update2Resume updateResume
+	public String updateResume2(Resume resume, HttpSession session) {
+	
+		System.out.println("来到修改后存简历的信息");
+		System.out.println("修改后的简历"+resume);
+		Date date = new Date();
+		resume.setCreatetime(date);
+		// 获取简历中的职位信息，查到完整部门信息和职位的完整信息
+		int did = resume.getDept().getdId();
+		Dept dept = deptService.findDeptById(did);
+		int pid = resume.getPosi().getpId();
+		Position posi = positionService.findPositionById(pid);
+		resume.setDept(dept);
+		resume.setPosi(posi);
+		System.err.println("添加完部门信息后的简历信息"+resume);
+		int res = resumeService.updateResume(resume);
+		System.out.println("修改后返回值"+res);
+		return "tourists/welcome";
 	}
 
 }

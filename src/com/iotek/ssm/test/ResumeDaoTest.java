@@ -38,7 +38,7 @@ public class ResumeDaoTest {
 	@Test
 	public void updateResumeByid() {
 		Resume resum = new Resume();
-		resum.setRid(6);
+		resum.setRid(42);
 		resum.setName("cc");
 		Date de = new Date();
 		resum.setCreatetime(de);
