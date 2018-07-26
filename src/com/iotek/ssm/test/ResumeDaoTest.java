@@ -24,7 +24,7 @@ public class ResumeDaoTest {
 	
 	@Test
 	public void findResumeByid() {
-		Resume resume = resumeDao.findResumeById(1);
+		Resume resume = resumeDao.findResumeById(17);
 		System.out.println(resume);
 }
 	@Test
@@ -52,7 +52,7 @@ public class ResumeDaoTest {
 			posi.setpName("aa");
 		resum.setPosi(posi);
 		resum.setLastjob("捡垃圾");
-		resum.setSalary(100000);
+		resum.setSalary(100000+"");
 		resum.setSex("男");
 		resum.setEmail("1145020704@qq.com");
 		resum.setPoitics("党员");
@@ -81,7 +81,7 @@ public class ResumeDaoTest {
 			posi.setpName("aa");
 		resum.setPosi(posi);
 		resum.setLastjob("捡垃圾");
-		resum.setSalary(100000);
+		resum.setSalary(100000+"");
 		resum.setSex("男");
 		resum.setEmail("1145020703@qq.com");
 		resum.setPoitics("党员");

@@ -9,23 +9,13 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$("#dept")
-				.change(
-						function() {
-							var dept = $(this).val()
-							var posi = $("#position")
-							var options = $("#position option")
-							options.remove()
-							if (dept == 0) {
-								posi.append("<option>请选择</option>");
-							} else if (dept == 1) {
-								posi
-										.append("<option>请选择</option><option>java工程师</option><option>c工程师</option><option>c++工程师</option>");
-							} else if (dept == 2) {
-								posi
-										.append("<option>请选择</option><option>招聘专员</option><option>人事</option><option>文员</option>");
-							}
-						})
+	    $("#position option").hide()
+		$("#dept").change(function(){
+		var a = $(this).val();
+		$("#position option").hide()
+		$("."+a).show()
+		$("#position").val("")
+		})
 	})
 </script>
 </head>
@@ -45,6 +35,7 @@
 				<td>真实姓名</td>
 				<td><input name="name" type="text" value = ${requestScope.resume.name }></td>
 				<td>性别</td>
+				<c:if>
 				<td><input type="radio" name="sex" value="男"  checked="true"/><label>男</label>
 					<input type="radio" name="sex" value="女" /><label>女</label></td>
 			</tr>
@@ -70,16 +61,23 @@
 			<tr>
 				<td>应聘职位</td>
 				<td><select id="dept" name="dept.did">
-				<option value="0">${requestScope.resume.dept.dName}</option>
+				     <option value="0">${requestScope.resume.dept.dName}</option>
 						<option value="0">--请选择部门--</option>
-						<option value="1">开发部</option>
-						<option value="2">人事部</option>
-				</select> <select id="position" name="posi.pid">
-						<option value="0">--请选择职位--</option>
+						<c:forEach items="${sessionScope.depts}" var="dept" >
+		 		          <option value="${dept.dId}">${dept.dName}</option>
+    		            </c:forEach>
+    				</select> <select id="position" name="posi.pid">
+				        <option value="0">${requestScope.resume.posi.pName}</option>
+				        <option value="0">--请选择职位--</option>
+						<c:forEach items="${sessionScope.depts}" var="dept" >
+			               <c:forEach items="${dept.positionss}" var="posi" >
+		    	             <option class="${dept.dId}"  value = "${posi.pId}">${posi.pName}</option>
+			               </c:forEach> 
+		                </c:forEach> 
 				</select></td>
 				<td>政治面貌</td>
 				<td><select name="positics">
-				        <option value="${requestScope.resume.posi.pName}">${requestScope.resume.pName}</option>
+				        <option value="${requestScope.resume.poitics}">${requestScope.resume.poitics}</option>
 						<option value="普通群众">普通群众</option>
 						<option value="团员">团员</option>
 						<option value="党员">党员</option>

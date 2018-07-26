@@ -13,7 +13,7 @@ public class Resume {
 	private Dept dept;//部门
 	private Position posi;//职位
 	private String lastjob;//上份工作
-	private int salary;//工资
+	private String salary;//工资
 	private  String sex;//性别
 	private  String educal;//教育
 	private  String email;//邮箱
@@ -62,10 +62,10 @@ public class Resume {
 	public void setLastjob(String lastjob) {
 		this.lastjob = lastjob;
 	}
-	public int getSalary() {
+	public String getSalary() {
 		return salary;
 	}
-	public void setSalary(int salary) {
+	public void setSalary(String salary) {
 		this.salary = salary;
 	}
 	public String getSex() {
@@ -119,7 +119,7 @@ public class Resume {
 				+ hobby + "]";
 	}
 	public Resume(int rid, String name, Date createtime, int age, int tel, Dept dept, Position posi, String lastjob,
-			int salary, String sex, String educal, String email, String poitics, String expe, String hobby) {
+			String salary, String sex, String educal, String email, String poitics, String expe, String hobby) {
 		super();
 		this.rid = rid;
 		this.name = name;

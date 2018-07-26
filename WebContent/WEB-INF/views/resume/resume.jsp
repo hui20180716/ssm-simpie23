@@ -24,7 +24,8 @@
 <body>
 	<form action="<%=request.getContextPath()%>/resume/resume"
 		method="get">
-		<input name="rid" value="-1" type = "hidden">
+		
+		
 		<table>
 			<tr>
 				<td>简历</td>
@@ -59,21 +60,21 @@
 			</tr>
 			<tr>
 				<td>应聘职位</td>
-				<td><select id="dept" name="dept.did">
+				<td><select id="dept" name="dept.dId">
 						<option value="0">--请选择部门--</option>
-						<c:forEach items="${requestScope.depts}" var="dept" >
+						<c:forEach items="${sessionScope.depts}" var="dept" >
 		 		         <option value="${dept.dId}">${dept.dName}</option>
     		</c:forEach> 
-				</select> <select id="position" name="posi.pid">
+				</select> <select id="position" name="posi.pId">
 						<option value="0">--请选择职位--</option>
-						<c:forEach items="${requestScope.depts}" var="dept" >
+						<c:forEach items="${sessionScope.depts}" var="dept" >
 			               <c:forEach items="${dept.positionss}" var="posi" >
-		    	             <option class="${dept.dId}" >${posi.pName}</option>
+		    	             <option class="${dept.dId}"  value = "${posi.pId}">${posi.pName}</option>
 			               </c:forEach> 
 		                </c:forEach> 
 				</select></td>
 				<td>政治面貌</td>
-				<td><select name="positics">
+				<td><select name="poitics">
 						<option value="普通群众">普通群众</option>
 						<option value="团员">团员</option>
 						<option value="党员">党员</option>

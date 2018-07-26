@@ -12,11 +12,11 @@
 	
 	 <select id="findTouristByname" parameterType="String" resultMap="ClassResultMap" >
 	    select *
-	     from Tourist t ,resume r where tname = (#{name}) and t.rid = r.rid
+	     from Tourist  where tname = (#{name})
 	</select> 
 	<select id="findTouristById" parameterType="int"  resultMap="ClassResultMap">
-	    select * from Tourist 
-	    where tid = (#{tId})
+	    select * from Tourist  t ,resume r 
+	    where t.tid = (#{tId}) and t.rid = r.rid
 	</select>
 	
 	
@@ -29,7 +29,6 @@
 	  <result property="Tpassword" column="Tpassword"/>
 	  <association property="resume" javaType="Resume">
 			<id property="rid" column="rid"/>
-			
 	  </association> 
 	</resultMap>
 	

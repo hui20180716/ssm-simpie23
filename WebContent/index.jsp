@@ -12,7 +12,6 @@
 	  $("#submit1").click(function(){
 	  var a = $("input[name='name']").val()
 	  var b = $(":password").val()
-	  
 	  if(!reg.test(a)){
 		  alert("错误：用户名长度不能少于6个字符并且第一个字母为字母"); 
 	  }else if(!reg.test(b)){

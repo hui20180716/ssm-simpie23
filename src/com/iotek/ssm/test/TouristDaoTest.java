@@ -45,24 +45,24 @@ public class TouristDaoTest {
  }
  @Test
  public void findTById() {
-	 Tourist to = tourist.findTouristById(46);
+	 Tourist to = tourist.findTouristById(49);
 	 System.out.println(to);
  }
  
  @Test
  public void findTByName() {
-	 Tourist to = tourist.findTouristByname("a1234567");
+	 Tourist to = tourist.findTouristByname("a123456");
 	 System.out.println(to);
  }
  @Test
  public void update() {
 	 Tourist tour = new Tourist();
 	 //tour.setMessgae(messgae);
-	 tour.setTid(44);
-	 tour.setTname("r123456");
-	 tour.setTpassword("bb");
+	 tour.setTid(49);
+	 tour.setTname("a123456");
+	 tour.setTpassword("a1234567");
 	 Resume resume = new Resume();
-	 resume.setRid(13);
+	 resume.setRid(17);
 	 tour.setResume(resume);
 	 int num = tourist.updateTourist(tour);
 	 System.out.println(num);

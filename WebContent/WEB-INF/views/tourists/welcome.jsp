@@ -5,9 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var a = $("#input").val()
+		if(a=="true")
+			alert("你没有简历，请填写简历");
+	})
+</script>
 </head>
 <body>
-  
+  <input id = "input" type= "hidden" value = "${requestScope.flage}">
 	<div>
 	    <h1>欢迎访问</h1>
 		<a href="<%=request.getContextPath()%>/tourist/recruit">浏览招聘职位信息</a> 
