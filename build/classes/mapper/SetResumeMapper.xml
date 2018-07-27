@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iotek.ssm.dao.SetResumeDao">
+    <insert id="insertSerResume" >
+	   insert into setresume  (tid,srtime,interview,state,employment)
+	   values (#{tourist.Tid},#{srTime},#{interView},#{state}, #{employment})
+	</insert>
+	<select id="findSetResumeAll" resultMap="ClassResultMap" >
+	    select * 
+	    from  setresume se,tourist t,resume r 
+	    where se.tid = t.tid 
+	      and t.rid = r.rid;
+	</select>
+	<update id="updateSetResum" >
+	update setresume set 
+	tid=#{tourist.Tid},srtime=#{srTime},vmtime=#{vmtime},
+	interview=#{interView},state=#{state},employment=#{employment}
+	where srid = (#{srId})
+	</update>
+	
+	<select id="findSetResumeAllById" resultMap="ClassResultMap" parameterType="int">
+	    select * 
+	    from  setresume se,tourist t,resume r 
+	    where se.tid = t.tid 
+	      and t.rid = r.rid and se.srId = (#{srId})
+	</select>
+	<select id="findSetResumeByTId" resultMap="ClassResultMap" parameterType="int">
+	    select * 
+	    from  setresume se,tourist t,resume r 
+	    where se.tid = t.tid 
+	      and t.rid = r.rid and se.tid = (#{tourist.Tid})
+	</select>
+	<resultMap type="SetResume" id="ClassResultMap">
+	    <id property="srId" column="srid"/>
+	    <result property="srTime" column="srtime"/>
+	    <result property="interView" column="interview"/>
+	    <result property="state" column="state"/>
+	    <result property="employment" column="employment"/>
+	      <association property="tourist" javaType="Tourist">
+			<id property="tid" column="Tid"/>
+			<result property="Tname" column="Tname"/>
+			<association property="resume" javaType="Resume">
+			    <id property="rid" column="rid"/>
+			    <result property="name" column="name"/>
+	         </association> 
+	      </association> 
+	</resultMap> 
+	
+</mapper>
+
+
+
