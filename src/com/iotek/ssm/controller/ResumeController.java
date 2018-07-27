@@ -1,6 +1,5 @@
 package com.iotek.ssm.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,13 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.iotek.ssm.entity.Dept;
 import com.iotek.ssm.entity.Position;
 import com.iotek.ssm.entity.Resume;
+import com.iotek.ssm.entity.SetResume;
 import com.iotek.ssm.entity.Tourist;
 import com.iotek.ssm.service.DeptService;
 import com.iotek.ssm.service.PositionService;
 import com.iotek.ssm.service.ResumeService;
+import com.iotek.ssm.service.SetResumeService;
 import com.iotek.ssm.service.TouristService;
 
-@RequestMapping("/resume")
+@RequestMapping("/resume")//resume/showResume
 @Controller
 public class ResumeController {
 
@@ -31,6 +32,9 @@ public class ResumeController {
 	// 部门信息
 	@Autowired
 	private DeptService deptService;
+	
+	@Autowired
+	private SetResumeService setResumeService;
 
 	// 职位信息
 	@Autowired
@@ -115,7 +119,7 @@ public class ResumeController {
 		}
 	}
 	/**
-	 * 修改简历后包存到数据库中
+	 * 修改简历后保存到数据库中
 	 */
 	@RequestMapping("/update2Resume") // resume/update2Resume updateResume
 	public String updateResume2(Resume resume, HttpSession session) {
@@ -136,5 +140,18 @@ public class ResumeController {
 		System.out.println("修改后返回值"+res);
 		return "tourists/welcome";
 	}
-
+   
+	//展示简历 查看后把状态修改下
+	@RequestMapping("showResume")
+	public String showDate(int id,HttpServletRequest req,int srid) {
+		System.out.println("展示简历,简历的id"+id+"投递简历的id:"+srid);
+		Resume resume = resumeService.findResumeById(id);
+		System.out.println("通过rid找到的简历"+resume );
+		SetResume setResume = setResumeService.findSetResumeAllById(srid);
+		setResume.setState(1);
+		setResumeService.
+		System.out.println("此时简历被查看了，state因该等于1"+);
+		req.setAttribute("resume", resume);
+		return "setResume/resumeShow";
+	}
 }
