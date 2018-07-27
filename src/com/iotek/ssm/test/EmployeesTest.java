@@ -44,4 +44,9 @@ public class EmployeesTest {
 			System.out.println(employees);
 		}
 	}
+	@Test
+	public  void selectEmployeesByName() {
+		Employees employees = employeesDao.findEmployeesByName("张大人");
+		System.out.println(employees);
+	}
 }

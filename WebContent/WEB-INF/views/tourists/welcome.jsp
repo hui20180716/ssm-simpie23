@@ -11,8 +11,11 @@
 		var a = $("#input").val()
 		if(a=="true")
 			alert("你没有简历，请填写简历");
+		if(a=="ok")
+			alert("简历投递成功");
+		if(a=="no")
+			alert("简历投递失败");
 		 $("#a4").click(function(){
-			 
 			 var b = false;
 			 b=window.confirm("是否要退出？");
 				 return b;

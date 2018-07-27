@@ -21,5 +21,9 @@ public interface EmployeesDao  {
 	 * 修改
 	 */
 	public int updateEmployees();
+	/**
+	 * 通过id 查看员工
+	 */
+	public Employees findEmployeesByName(String name);
 
 }

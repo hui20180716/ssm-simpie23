@@ -6,6 +6,10 @@
 	   select  * from Employees
 	</select>
 	
+	<select id="findEmployeesByName" resultType="Employees" >
+	   select  * from Employees  where  name = (#{name})
+	</select>
+	
 	<insert id="insertEmployees">
 	    insert into Employees (name,password,createtime,did,pid,sid,aid,rid,tid,said,oid,status) 
 	    values (#{name},#{password},#{createTime},#{dept.dId},#{posi.pId},#{salary.sId},

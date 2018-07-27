@@ -63,8 +63,8 @@
 </script>
 </head>
 
-<body>
-	<div style="color: red" align="center">
+<body >
+	<div style="color: red;background:url(<%=request.getContextPath()%>/WebContent/01.jpg);" align="center"  >
 		<form action="javaScript:void(0)"><!-- tourist/register -->
 			<table>
 				<tr>

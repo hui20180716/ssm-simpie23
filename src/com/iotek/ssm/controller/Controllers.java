@@ -4,12 +4,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iotek.ssm.entity.Dept;
+import com.iotek.ssm.entity.Resume;
+import com.iotek.ssm.entity.SetResume;
 import com.iotek.ssm.entity.Tourist;
 import com.iotek.ssm.service.DeptService;
+import com.iotek.ssm.service.SetResumeService;
 import com.iotek.ssm.service.TouristService;
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +22,8 @@ import org.springframework.stereotype.Controller;
 @RequestMapping("/tourist")
 @Controller 
 public class Controllers {
+	@Autowired
+	private  SetResumeService setResumeService;
 	
 	@Autowired
 	private TouristService touristService;
@@ -128,10 +135,29 @@ public class Controllers {
 		 * 投递简历  tourist/setResume 就是把自己的简历信息部分发投递表中 
 		 */
 		@RequestMapping("setResume")
-		public String setResume() {
+		public String setResume(HttpSession session ,HttpServletRequest req) {
 			System.out.println("投递简历");
+			SetResume setResum = new SetResume();
+			Date da = new Date();
+			setResum.setSrTime(da);
+			Tourist tour =(Tourist)session.getAttribute("Tourist");
+			System.out.println("此时游客表中信息"+tour);
+			int rId = tour.getResume().getRid();
+			if(rId!=0) {
+				System.out.println("游客表中的简历rid1"+rId);
 			
-			return "tourists/updatepassword";
+			setResum.setTourist(tour);
+			int ser = setResumeService.insertSetResume(setResum);
+			if(ser==1) {
+			req.setAttribute("flage","ok" );
+			}else {
+				req.setAttribute("flage","no" );
+			}
+			} else {
+				System.out.println("游客表中的简历rid2"+rId);
+				req.setAttribute("flage","true" );
+			}
+			return "tourists/welcome";
 			}
 }
 	
