@@ -148,10 +148,11 @@ public class ResumeController {
 		Resume resume = resumeService.findResumeById(id);
 		System.out.println("通过rid找到的简历"+resume );
 		SetResume setResume = setResumeService.findSetResumeAllById(srid);
-		setResume.setState(1);
-		setResumeService.
-		System.out.println("此时简历被查看了，state因该等于1"+);
+		setResume.setState(1);//把是否查看改为查看
+		setResumeService.update(setResume);
+		System.out.println("此时简历被查看了，state应该等于1"+setResume);
 		req.setAttribute("resume", resume);
+		req.setAttribute("setResume", setResume);
 		return "setResume/resumeShow";
 	}
 }
