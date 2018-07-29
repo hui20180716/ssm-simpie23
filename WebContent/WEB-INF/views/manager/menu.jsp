@@ -19,11 +19,17 @@
 				url:"<%=request.getContextPath()%>/employees/setResume",
 				type:"post",
 				datatype:"json",
-				success:function(data){
-					if(data!="0")
-					alert("有"+data+"新的简历投递");
+				success:function(data){/* [0,0] */
+					
+					if(data[1]!="0"){
+					alert("有"+data[1]+"份新的简历投递");
+					}
+					if(data[3]!="0"){
+						alert("有"+data[3]+"份新的面试");
+						}
 				}
 			})
+			
 	}
 	})
 </script>

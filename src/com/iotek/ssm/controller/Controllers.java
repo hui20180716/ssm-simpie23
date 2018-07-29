@@ -168,7 +168,7 @@ public class Controllers {
 		  * 自动查看是否有面试
 		  * @return
 		  */
-			@RequestMapping("findsetResume")//findsetResume
+			@RequestMapping("findsetResume")//tourist/findsetResume
 			@ResponseBody
 			public String findsetResume(HttpSession session) {
 				int ser = 0;
@@ -177,9 +177,13 @@ public class Controllers {
 				int tId = tour.getTid();
 				SetResume sr = setResumeService.findSetResumeByTId(tId);
 				System.out.println("查看面试时的投递表"+sr);
-				if(sr.getInterView()==1&&sr.getInterView()==0) {
+				if(sr.getInterView()==1) {
 					ser = 1;
 					System.out.println("说明有面试");
+				}
+				if(sr.getEmployment()==1) {
+					ser = 2;
+					System.out.println("说明通过了面试");
 				}
 				
 			 return ser+"";

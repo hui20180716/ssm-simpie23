@@ -155,4 +155,24 @@ public class ResumeController {
 		req.setAttribute("setResume", setResume);
 		return "setResume/resumeShow";
 	}
+	//resume/employment 录用
+	@RequestMapping("showResume")
+	public String employments(HttpServletRequest req,int srid) {
+		System.out.println("进入录用过程");
+		SetResume setResume = setResumeService.findSetResumeAllById(srid);
+		setResume.setEmployment(1);;//把是否录用改为录用
+		int ser = setResumeService.update(setResume);
+		System.out.println("此时简历被查看了，employment应该等于1"+setResume+"修改返回值"+ser);
+		req.setAttribute("setResume", setResume);
+		return "setResume/resumeShow";
+		
+	}
 }
+
+
+
+
+
+
+
+

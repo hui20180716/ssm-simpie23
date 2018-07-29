@@ -43,6 +43,11 @@ public interface SetResumeService {
 	 * 
 	 */
 	public SetResume findSetResumeByTId(int tid);
+	/**
+	 * 查找是否有面试
+	 * @return
+	 */
+	public ArrayList<SetResume> findNewInterView();
 		
 	
 }

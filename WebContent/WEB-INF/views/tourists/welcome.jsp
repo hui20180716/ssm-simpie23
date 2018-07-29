@@ -19,27 +19,29 @@
 			alert("你的简历还没有投递");
 		if(a=="f2")
 			alert("你被邀请面试了，不用再投递了");
+		 $("#input").val("")/* 将input的值清零 */
 		 $("#a4").click(function(){
 			 var b = false;
 			 b=window.confirm("是否要退出？");
 				 return b;
 		 })
 			var ints = self.setInterval(beats,2000)/* 每两秒执行程序setinterval */
-			
 			$("#b1").click(function(){
 				ints=window.clearInterval(ints)
 			})
 			function beats(){
-				
 				$.ajax({
 					url:"<%=request.getContextPath()%>/tourist/findsetResume",
 					type:"post",
 					datatype:"post",
-					
-					success:function(data){
+					success:function(data){	
 						
-						if(data=="1")
-						alert("邀请你面试");
+					if(data=="2"){
+						alert("你通过了面试，欢迎加入我们"+data);
+					}
+					if(data=="1"){
+						alert("邀请你面试" + data);
+					}
 					}
 				})
 		}
@@ -57,6 +59,7 @@
 		<a href = "<%=request.getContextPath()%>/tourist/setResume">投递简历</a> <br>
 		<a href = "<%=request.getContextPath()%>/tourist/findsetResume2">查看投递简历进度</a> <br>
 	    <a href = "<%=request.getContextPath()%>/index.jsp" ><input type = "button" value = "退出" id = "a4"/></a> <br>
+	    <a href = "<%=request.getContextPath()%>/tourist/findsetResume2">填写员工表</a> <br>
 	</div> 
 	 <button id="b1"> stop</button>                                          
 </body>

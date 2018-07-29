@@ -53,22 +53,31 @@ public class EmployeeController {
 	}
 
 	@ResponseBody
-	@RequestMapping("setResume") // employees/loginTour
+	@RequestMapping("setResume") // employees/loginTour setResume
 	public String setResumeEmployee() {
 		System.out.println("查看是否有新的简历投递");
 		ArrayList<SetResume> srs = (ArrayList<SetResume>) setResumeService.findNewSetResume();
 		System.out.println("查看是否有新的简历投递" + srs.size());
-		return JSON.toJSONString(srs.size());
+		//查看是否有面试
+		ArrayList<SetResume> ser = setResumeService.findNewInterView();
+		System.out.println("有几份面试"+ser);
+		ArrayList<Integer> num =new ArrayList<Integer>();
+		num.add(srs.size());
+		num.add(ser.size());
+		return JSON.toJSONString(num);
 	}
     //查看新简历  
 	@RequestMapping("looksetResume")
 	public String lookSetResume(HttpServletRequest req) {
 		System.out.println("查看所有新的简历");
 		ArrayList<SetResume> srs = (ArrayList<SetResume>) setResumeService.findNewSetResume();
+		//查看是否有面试
+				ArrayList<SetResume> ser = setResumeService.findNewInterView();
 		for (SetResume setResume : srs) {
 			System.out.println(setResume);
 		}
 		req.setAttribute("newResume",srs );
+		req.setAttribute("newInterview",ser );
 		return "setResume/setResume";
 	}
 	//邀请面试

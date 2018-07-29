@@ -19,7 +19,15 @@
              <td><a href="<%=request.getContextPath()%>/resume/showResume?id=${Resume.tourist.resume.rid}&srid=${Resume.srId}">查看简历</a></td>
         </tr> 
      </c:forEach>
-     
+     <c:forEach items="${requestScope.newInterview}"  var="Resume">
+        <tr>
+             <td>${Resume.srId}</td>  <td>${Resume.tourist.tname}</td> <td><fmt:formatDate value="${Resume.srTime}" pattern="yyyy-MM-dd "/> </td>
+             <td>${Resume.state}</td><td>${Resume.interView}</td><td>${Resume.employment}</td>
+             <c:if test="${Resume.interView==2}">
+               <td><a href="<%=request.getContextPath()%>/resume/employment?srid=${Resume.srId}">是否录用</a></td>
+            </c:if>
+        </tr> 
+     </c:forEach>
      </table> 
 </body>
 </html>

@@ -15,7 +15,8 @@
         <tr>
              <td>${requestScope.newResume.srId}</td>  <td>${requestScope.newResume.tourist.tname}</td> <td><fmt:formatDate value="${requestScope.newResume.srTime}" pattern="yyyy-MM-dd "/> </td>
              <td>${requestScope.newResume.state}</td><td>${requestScope.newResume.interView}</td><td>${requestScope.newResume.employment}</td>
-              <c:if test="${requestScope.newResume.interView}==1">
+              
+              <c:if test="${requestScope.newResume.interView==1}">
 	             <td><a href="<%=request.getContextPath()%>/tourist/findsetResume3?bolean=true"><input type="button" value = "接受面试"/></a></td>
 	             <td><a href="<%=request.getContextPath()%>/tourist/findsetResume3?bolean=false"><input type="button" value = "不接受面试 "/></a></td>
              </c:if>

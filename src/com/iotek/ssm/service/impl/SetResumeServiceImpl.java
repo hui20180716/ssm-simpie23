@@ -66,4 +66,19 @@ public class SetResumeServiceImpl implements SetResumeService {
 		return sr;
 	}
 
+	@Override
+	public ArrayList<SetResume> findNewInterView() {
+		
+		ArrayList<SetResume> srs= new ArrayList<SetResume>();
+		 ArrayList<Integer> tids= new ArrayList<Integer>();
+		ArrayList<SetResume> findNewSetResume = findSetResumeAll();
+		for (SetResume setResume : findNewSetResume) {
+			if(setResume.getInterView()==2&&setResume.getEmployment()==0&&!tids.contains(setResume.getTourist().getTid())) {
+				srs.add(setResume);
+				 tids.add(setResume.getTourist().getTid());
+			}
+		}
+		return srs;
+	}
+
 }
