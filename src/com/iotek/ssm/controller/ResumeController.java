@@ -57,7 +57,7 @@ public class ResumeController {
 	 */
 	@RequestMapping("/04")
 	public String find4(HttpSession session) {
-		/*ArrayList<Dept> depts = deptService.findAllDept();
+		/*ArrayList<Dept> depts = deptService.findAllDept();//resume/employment
 		session.setAttribute("depts", depts);*/
 		System.err.println("去创建简历");
 		return "resume/resume";
@@ -155,16 +155,16 @@ public class ResumeController {
 		req.setAttribute("setResume", setResume);
 		return "setResume/resumeShow";
 	}
-	//resume/employment 录用
-	@RequestMapping("showResume")
-	public String employments(HttpServletRequest req,int srid) {
-		System.out.println("进入录用过程");
+	//resume/employment 录用 //resume/employment
+	@RequestMapping("employment")
+	public String employments(HttpServletRequest req,int srid,int id) {
+		System.err.println("进入录用过程" +"是否被录用"+id);
 		SetResume setResume = setResumeService.findSetResumeAllById(srid);
-		setResume.setEmployment(1);;//把是否录用改为录用
+		setResume.setEmployment(id);;//把是否录用改为录用
 		int ser = setResumeService.update(setResume);
 		System.out.println("此时简历被查看了，employment应该等于1"+setResume+"修改返回值"+ser);
-		req.setAttribute("setResume", setResume);
-		return "setResume/resumeShow";
+		
+		return "manager/menu";
 		
 	}
 }

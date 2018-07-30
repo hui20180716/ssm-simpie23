@@ -24,7 +24,8 @@
              <td>${Resume.srId}</td>  <td>${Resume.tourist.tname}</td> <td><fmt:formatDate value="${Resume.srTime}" pattern="yyyy-MM-dd "/> </td>
              <td>${Resume.state}</td><td>${Resume.interView}</td><td>${Resume.employment}</td>
              <c:if test="${Resume.interView==2}">
-               <td><a href="<%=request.getContextPath()%>/resume/employment?srid=${Resume.srId}">是否录用</a></td>
+               <td><a href="<%=request.getContextPath()%>/resume/employment?srid=${Resume.srId}&id=2">录用</a></td>
+               <td><a href="<%=request.getContextPath()%>/resume/employment?srid=${Resume.srId}&id=1">不录用</a></td>
             </c:if>
         </tr> 
      </c:forEach>

@@ -7,7 +7,15 @@ public class Employees {
 	private int id;
 	private String name;
 	private String password;
-	private Date createTime ;
+	private Date createTime ;//入职时间
+	
+	private int cardId;//银行卡号
+	private int tel;//电话号码
+	private int sex;//性别
+	private String email;//邮箱
+	private String educal;//学历 
+	private int age;//年龄
+	
 	private Dept dept = new Dept();// 部门 多对一
 	private Position posi = new Position();// 职位 一对一
 	private Salary salary = new Salary();// 薪资 一对一
@@ -40,6 +48,42 @@ public class Employees {
 	}
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+	public int getCardId() {
+		return cardId;
+	}
+	public void setCardId(int cardId) {
+		this.cardId = cardId;
+	}
+	public int getTel() {
+		return tel;
+	}
+	public void setTel(int tel) {
+		this.tel = tel;
+	}
+	public int getSex() {
+		return sex;
+	}
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getEducal() {
+		return educal;
+	}
+	public void setEducal(String educal) {
+		this.educal = educal;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
 	}
 	public Dept getDept() {
 		return dept;
@@ -95,13 +139,20 @@ public class Employees {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Employees(int id, String name, String password, Date createTime, Dept dept, Position posi, Salary salary,
-			Attendance atten, Resume resume, Train train, SalaryAbout salaryAbout, Overtime overtime, int status) {
+	public Employees(int id, String name, String password, Date createTime, int cardId, int tel, int sex, String email,
+			String educal, int age, Dept dept, Position posi, Salary salary, Attendance atten, Resume resume,
+			Train train, SalaryAbout salaryAbout, Overtime overtime, int status) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.createTime = createTime;
+		this.cardId = cardId;
+		this.tel = tel;
+		this.sex = sex;
+		this.email = email;
+		this.educal = educal;
+		this.age = age;
 		this.dept = dept;
 		this.posi = posi;
 		this.salary = salary;
@@ -119,10 +170,10 @@ public class Employees {
 	@Override
 	public String toString() {
 		return "Employees [id=" + id + ", name=" + name + ", password=" + password + ", createTime=" + createTime
-				+ ", dept=" + dept + ", posi=" + posi + ", salary=" + salary + ", atten=" + atten + ", resume=" + resume
-				+ ", train=" + train + ", salaryAbout=" + salaryAbout + ", overtime=" + overtime + ", status=" + status
-				+ "]";
+				+ ", cardId=" + cardId + ", tel=" + tel + ", sex=" + sex + ", email=" + email + ", educal=" + educal
+				+ ", age=" + age + ", dept=" + dept + ", posi=" + posi + ", salary=" + salary + ", atten=" + atten
+				+ ", resume=" + resume + ", train=" + train + ", salaryAbout=" + salaryAbout + ", overtime=" + overtime
+				+ ", status=" + status + "]";
 	}
 
-	
 }

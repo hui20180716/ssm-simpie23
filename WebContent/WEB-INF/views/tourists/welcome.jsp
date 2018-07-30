@@ -17,6 +17,8 @@
 			alert("简历投递失败");
 		if(a=="no2")
 			alert("你的简历还没有投递");
+		if(a=="no3")
+			alert("你还没有被录用");
 		if(a=="f2")
 			alert("你被邀请面试了，不用再投递了");
 		 $("#input").val("")/* 将input的值清零 */
@@ -58,8 +60,9 @@
 		<a href = "<%=request.getContextPath()%>/tourist/updatePassword">修改登录密码</a> <br>
 		<a href = "<%=request.getContextPath()%>/tourist/setResume">投递简历</a> <br>
 		<a href = "<%=request.getContextPath()%>/tourist/findsetResume2">查看投递简历进度</a> <br>
+	    <a href = "<%=request.getContextPath()%>/tourist/insertEmployees">填写员工表</a> <br>
 	    <a href = "<%=request.getContextPath()%>/index.jsp" ><input type = "button" value = "退出" id = "a4"/></a> <br>
-	    <a href = "<%=request.getContextPath()%>/tourist/findsetResume2">填写员工表</a> <br>
+	    
 	</div> 
 	 <button id="b1"> stop</button>                                          
 </body>
