@@ -10,6 +10,7 @@ public class Position {
 		return pId;
 	}
 	public void setpId(int pId) {
+		
 		this.pId = pId;
 	}
 	public String getpName() {

@@ -10,12 +10,13 @@
   $(function(){
 	   $("#submit2").click(function(){
 	  var a = $("input[name='name']").val()
+	  alert(a)
 	  var b = $(":password").val()
 	 $.ajax({
 		 url:"employees/loginTour",
 		 type:"post",
 		 datqatype:"text",
-		 data:{"name":a,"password":b},
+		 data:{"id":a,"password":b},
 		 success:function(data){
 		 if(data=="true"){
 				alert("登录成功");
@@ -32,15 +33,15 @@
 </head>
 
 <body >
-	<div style="color: red;background:url(<%=request.getContextPath()%>/WebContent/01.jpg);" align="center"  >
+	<div style="color: red" align="center"  >
 		<form action="javaScript:void(0)"><!-- tourist/register -->
 			<table>
 				<tr>
 					<td>注册</td>
 				</tr>
 				<tr>
-					<td>用户名：</td>
-					<td><input name="name" id="name"  required="required" maxlength="11"></td>
+					<td>工号：</td>
+					<td><input name="name" id="name"   required="required" maxlength="11"></td>
 				</tr>
 				<tr>
 					<td>密码</td>

@@ -255,7 +255,7 @@ public class Controllers {
 		int rId = tour.getResume().getRid();
 		Resume resume = resumeService.findResumeById(rId);
 		System.out.println("这位游客的简历"+resume);
-		req.setAttribute("resume", "resume");
+		req.setAttribute("resume", resume);
 		if (sr.getEmployment() != 2) {
 			System.out.println("没有录用");
 			req.setAttribute("flage", "no3");

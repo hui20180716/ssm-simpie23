@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.iotek.ssm.entity.Employees;
+import com.iotek.ssm.entity.Position;
 import com.iotek.ssm.entity.SetResume;
 import com.iotek.ssm.service.EmployeeService;
+import com.iotek.ssm.service.PositionService;
 import com.iotek.ssm.service.SetResumeService;
 
 @RequestMapping("/employees") /// employees/Invitation
@@ -27,29 +30,42 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	@Autowired
 	private SetResumeService setResumeService;
-
+	@Autowired
+	private PositionService positionService;
 	/**
 	 * 员工登录
 	 */
 	@ResponseBody
 	@RequestMapping("/loginTour")
-	public String loginEmployees(String name, String password) {
+	public String loginEmployees( String password,String id,HttpSession session) {
 		System.out.println("员工登录");
 		String bool = "false";
+		int id2= Integer.parseInt(id);
 		Employees empl = new Employees();
-		empl.setName(name);
 		empl.setPassword(password);
+		empl.setId(id2);
 		int res = employeeService.logingEmployees(empl);
 		if (res > 0) {
+			Employees employee = employeeService.findEmployeesById(id2);
+			session.setAttribute("employee", employee);
 			bool = "true";
 		}
 		return bool;
 	}
 
 	@RequestMapping("menu")
-	public String loginSuccessEmployee() {
+	public String loginSuccessEmployee(HttpSession session) {
+		Employees ey =(Employees) session.getAttribute("employee");
+	
 		System.out.println("员工登录成功");
+		int pid = ey.getPosi().getpId();
+		Position posi = positionService.findPositionById(pid);
+		if(posi.getLv()==2) {
 		return "manager/menu";
+		}else if(posi.getLv()==3){
+			return "employee/employeeMenu";
+		}
+		return "employee/employeeMenu";
 	}
 
 	@ResponseBody

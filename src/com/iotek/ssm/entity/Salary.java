@@ -13,6 +13,7 @@ public class Salary {
 	private int performance;//绩效工资
 	private int overtime;//加班
 	private int salaryAbout;//奖惩
+	
 	public int getsId() {
 		return sId;
 	}

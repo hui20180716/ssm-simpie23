@@ -20,9 +20,9 @@ public interface EmployeesDao  {
 	/**
 	 * 修改
 	 */
-	public int updateEmployees();
+	public int updateEmployees(int id);
 	/**
-	 * 通过id 查看员工
+	 * 通过name 查看员工
 	 */
 	public Employees findEmployeesByName(String name);
 

@@ -11,7 +11,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.iotek.ssm.dao.EmployeesDao;
+import com.iotek.ssm.entity.Dept;
 import com.iotek.ssm.entity.Employees;
+import com.iotek.ssm.entity.Position;
 
 
 
@@ -33,6 +35,13 @@ public class EmployeesTest {
 //		Date date=formatter.parse(time);	
 	    em.setCreateTime(da);
 	    em.setStatus(0);
+	    em.setAge(23);
+	    Dept d= new Dept();
+	    d.setdId(1);
+	    em.setDept(d);
+	    Position po=new Position();
+	    po.setpId(1);
+	    em.setPosi(po);
 		int inser = employeesDao.insertEmployees(em);
 		System.out.println(inser);	
 	}
@@ -47,6 +56,11 @@ public class EmployeesTest {
 	@Test
 	public  void selectEmployeesByName() {
 		Employees employees = employeesDao.findEmployeesByName("张大人");
+		System.out.println(employees);
+	}
+	@Test
+	public  void selectEmployeesByid() {
+		Employees employees = employeesDao.findEmployeesById(8);
 		System.out.println(employees);
 	}
 }

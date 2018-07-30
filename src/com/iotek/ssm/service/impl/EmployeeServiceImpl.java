@@ -14,14 +14,16 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Autowired
 	private EmployeesDao employeesDao;
 	/**
-	 * 员工登录
+	 * 通过名字查找员工
 	 */
 	public Employees findEmployeesByName(Employees employees) {
 		return employeesDao.findEmployeesByName(employees.getName()) ;
 	}
+	
 	@Override
 	public int logingEmployees(Employees employees) {
-		Employees employee = findEmployeesByName(employees);
+		Employees employee = findEmployeesById(employees.getId());
+		
 		//int ser = 0;
 		if(employee!=null&&employee.getPassword().equals(employees.getPassword())) {
 			return 1;
@@ -29,6 +31,18 @@ public class EmployeeServiceImpl implements EmployeeService{
 			
 		return 0;
 		}
+	}
+	@Override
+	public int insertenployee(Employees employees) {
+		// TODO Auto-generated method stub
+		return employeesDao.insertEmployees(employees);
+	}
+
+	
+
+	@Override
+	public Employees findEmployeesById(int id) {
+		return employeesDao.findEmployeesById(id);
 	}
 
 }

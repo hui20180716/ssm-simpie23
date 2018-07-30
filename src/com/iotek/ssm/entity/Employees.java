@@ -11,7 +11,7 @@ public class Employees {
 	
 	private int cardId;//银行卡号
 	private int tel;//电话号码
-	private int sex;//性别
+	private String sex;//性别
 	private String email;//邮箱
 	private String educal;//学历 
 	private int age;//年龄
@@ -61,10 +61,10 @@ public class Employees {
 	public void setTel(int tel) {
 		this.tel = tel;
 	}
-	public int getSex() {
+	public String getSex() {
 		return sex;
 	}
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 	public String getEmail() {
@@ -139,9 +139,9 @@ public class Employees {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Employees(int id, String name, String password, Date createTime, int cardId, int tel, int sex, String email,
-			String educal, int age, Dept dept, Position posi, Salary salary, Attendance atten, Resume resume,
-			Train train, SalaryAbout salaryAbout, Overtime overtime, int status) {
+	public Employees(int id, String name, String password, Date createTime, int cardId, int tel, String sex,
+			String email, String educal, int age, Dept dept, Position posi, Salary salary, Attendance atten,
+			Resume resume, Train train, SalaryAbout salaryAbout, Overtime overtime, int status) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -175,5 +175,5 @@ public class Employees {
 				+ ", resume=" + resume + ", train=" + train + ", salaryAbout=" + salaryAbout + ", overtime=" + overtime
 				+ ", status=" + status + "]";
 	}
-
+	
 }

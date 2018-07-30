@@ -12,4 +12,12 @@ public interface EmployeeService {
 	 * 员工登录
 	 */
 	public int logingEmployees(Employees employees);
+	/**
+	 * 新建立员工
+	 */
+	public int insertenployee(Employees employees) ;
+	/**
+	 * 通过id 查看员工
+	 */
+	public Employees findEmployeesById(int id);
 }
