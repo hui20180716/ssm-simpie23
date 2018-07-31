@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iotek.ssm.dao.SalaryDao">
+    
+	<insert id="insertSalary" parameterType="Salary">
+	 insert into salary (sid,month,sendTime,bass,socialSeccurity,eid,performance,oid,said) 
+	 values(#{sId},#{month},#{sendTime},#{bass},#{socialSecurity},#{eId},#{performance},
+    #{overtime}	,#{salaryAbout} )
+	</insert>
+	<select id="findSalary" resultType="Salary">
+	select * from salary 
+	</select>
+
+	<select id="findSaryById" resultType="Salary" parameterType="int">
+	    select * from salary where sid=#{sId}
+	</select>
+</mapper>

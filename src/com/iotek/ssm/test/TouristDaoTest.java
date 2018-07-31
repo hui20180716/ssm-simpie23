@@ -98,11 +98,14 @@ public class TouristDaoTest {
  @Test
  public  void getWeek(){
 	 Date da = new Date();
-	 String DateStr2 = "2018-7-30 22:00:00";
+	 
+	 String DateStr2 = "2018-7-31 9:00:00";
+	 
 	 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	// Date dateTime1 = dateFormat.parse(DateStr1);
 	 try {
 		Date dateTime2 = dateFormat.parse(DateStr2);
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
 		String week = sdf.format(dateTime2);
         // 得到微秒级别的差值
@@ -149,5 +152,34 @@ public class TouristDaoTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}//把当前时间转化为约束形式
+	 }
+ @Test
+ public  void getWeek3(){
+	 Date da = new Date();
+	 
+	 String DateStr2 = "2018-7-31 9:00:00";
+	 
+	 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
+	 try {
+		Date dateTime2 = dateFormat.parse(DateStr2);
+        long diff = dateTime2.getTime() - da.getTime();
+       System.out.println("两个时间差"+diff);
+        // 将级别提升到天
+        double days = diff / ( 60 * 60  );
+        System.out.println(days);
+        double d=(-days %1000);
+        System.out.println(d);
+//        if(d>500) {
+//        	
+//        	System.out.println( -days/1000+"是吗");
+//        }else { 
+//        	System.out.println( days);
+//        }
+	} catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
 	 }
 }
