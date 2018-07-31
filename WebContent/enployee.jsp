@@ -5,6 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <title>Insert title here</title>
+<style type="text/css">
+
+</style>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bg.css">
+
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
   $(function(){
@@ -29,10 +35,15 @@
 	 })
 	  })
   })
+  
+
+
+
 </script>
 </head>
 
 <body >
+<div id ="bg"></div>
 	<div style="color: red" align="center"  >
 		<form action="javaScript:void(0)"><!-- tourist/register -->
 			<table>

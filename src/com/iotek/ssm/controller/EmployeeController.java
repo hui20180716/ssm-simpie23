@@ -61,8 +61,10 @@ public class EmployeeController {
 		int pid = ey.getPosi().getpId();
 		Position posi = positionService.findPositionById(pid);
 		if(posi.getLv()==2) {
+			session.setAttribute("employee2", ey);
 		return "manager/menu";
 		}else if(posi.getLv()==3){
+			session.setAttribute("employee3", ey);
 			return "employee/employeeMenu";
 		}
 		return "employee/employeeMenu";

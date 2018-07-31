@@ -4,6 +4,18 @@
 <!DOCTYPE html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bg.css">
+<style type="text/css">
+	
+	.window{
+		color:red;
+		position: absolute;
+		top:30%;
+		left:50%;
+		transfrom:translateX(-50%);
+	}
+</style>
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -64,7 +76,8 @@
 </head>
 
 <body >
-	<div style="color: red;background:url(<%=request.getContextPath()%>/WebContent/01.jpg);" align="center"  >
+	<div id ="bg"></div>
+	<div class="window" >
 		<form action="javaScript:void(0)"><!-- tourist/register -->
 			<table>
 				<tr>
