@@ -25,7 +25,6 @@ import org.springframework.stereotype.Controller;
 public class Controllers {
 	@Autowired
 	private SetResumeService setResumeService;
-
 	@Autowired
 	private TouristService touristService;
 	// 部门信息

@@ -16,6 +16,9 @@
 
    <context:property-placeholder location="classpath:db.properties"/>
 
+	<import resource="springmvc.xml"/>
+
+
 	<!-- 配置数据源，选用c3p0 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="${driverClass}"></property>
@@ -58,6 +61,9 @@
 		<aop:pointcut expression="execution(* com.iotek.ssm.service.*.*(..))" id="pointcut"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
 	</aop:config>
+	
+	
+	
 	
 	
 </beans>

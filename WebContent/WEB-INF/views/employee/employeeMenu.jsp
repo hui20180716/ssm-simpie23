@@ -11,11 +11,12 @@
 	   $("#b1").click(function(){
 	  alert(a)
 	 $.ajax({
-		 url:"employee2/workShift",
+		 url:"employee2/workIn",
 		 type:"post",
 		 datqatype:"text",
-		 data:,
+		 
 		 success:function(data){
+			 alert(data)
 		 if(data=="true"){
 				alert("登录成功");
 			$("form").attr("action","<%=request.getContextPath()%>/employees/menu") 
@@ -30,9 +31,9 @@
 </script>
 </head>
 <body >
-    success
-    <button id = "b1" >上班打卡</button><br>
-    <button id = "b2" >下班打卡</button><br>
+    success   employee2/workIn //workOut
+    <button id = "${pageContext.request.contextPath}/employee2/workIn" >上班打卡</button><br>
+    <button id = "${pageContext.request.contextPath}/employee2/workIn" >下班打卡</button><br>
     <a href="<%=request.getContextPath()%>/employee2/insert">查看薪资表</a><br>
     <a href="${pageContext.request.contextPath}/employee2/train">培训</a><br>
     <a href="">查看奖惩表</a><br>

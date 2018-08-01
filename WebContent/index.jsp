@@ -20,8 +20,8 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
   $(function(){
-	  
 	  var reg=/^[a-zA-Z][\w]{6,30}$/;
+	  ---
 	  $("#submit1").click(function(){
 	  var a = $("input[name='name']").val()
 	  var b = $(":password").val()
@@ -34,12 +34,10 @@
 	 $.ajax({
 		 url:"tourist/register",
 		 type:"post",
-		 datqatype:"text",
+		 datatype:"text",
 		 data:{"name":a,"password":b},
 		 success:function(data){
-			 
-			if(data=="-1"){
-				
+			if(data=="-1"){	
 			 $("span").text("用户名已经被注册")
 			}else if(data=="0"){
 				alert("注册失败");
@@ -48,7 +46,6 @@
 				$("form").attr("action","<%=request.getContextPath()%>/tourist/register2") 
 				$("form").submit();
 			<%-- window.location.href="<%=request.getContextPath()%>/tourist/register2?id="+data --%>
-			
 		 }
 	 }})}
 	  })
@@ -58,7 +55,7 @@
 	 $.ajax({
 		 url:"tourist/loginTour",
 		 type:"post",
-		 datqatype:"text",
+		 datatype:"text",
 		 data:{"name":a,"password":b},
 		 success:function(data){
 		 if(data=="1"){

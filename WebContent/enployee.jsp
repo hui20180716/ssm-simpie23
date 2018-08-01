@@ -21,7 +21,7 @@
 	 $.ajax({
 		 url:"employees/loginTour",
 		 type:"post",
-		 datqatype:"text",
+		 datatype:"text",
 		 data:{"id":a,"password":b},
 		 success:function(data){
 		 if(data=="true"){

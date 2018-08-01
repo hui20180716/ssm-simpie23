@@ -3,6 +3,7 @@ package com.iotek.ssm.controller;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import com.iotek.ssm.entity.Employees;
 import com.iotek.ssm.entity.Resume;
 import com.iotek.ssm.entity.Salary;
 import com.iotek.ssm.entity.Tourist;
+import com.iotek.ssm.service.AttenService;
 import com.iotek.ssm.service.EmployeeService;
 import com.iotek.ssm.service.ResumeService;
 import com.iotek.ssm.service.SalaryService;
@@ -34,6 +36,8 @@ public class Employee2Controller {
 	private ResumeService resumeService;
 	@Autowired
 	private SalaryService SalaryService;
+	@Autowired
+	private AttenService attenService;
 	/**
 	 * 员工注册
 	 * @throws ParseException 
@@ -85,10 +89,10 @@ public class Employee2Controller {
 		}
 		/**
 		 * 上班打卡
-		 * @throws ParseException 
+		 * @throws ParseException //employee2/workIn
 		 */
 		@ResponseBody
-		@RequestMapping("workShift")//insert
+		@RequestMapping("workIn")//insert// employee2/workIn
 		public String workShift(HttpSession session) throws ParseException {
 			System.out.println("上班打卡");
 		    Employees ey =(Employees) session.getAttribute("employee3");
@@ -102,9 +106,9 @@ public class Employee2Controller {
 				attn.setEmpl(ey);
 				Date da= new Date();//上班时间
 				attn.setCheckIn(da);
+				attn.setData(da);
 				double days = getworkShift();
 				double lateTime=0; 
-				
 				if(days>0) {
 					double d=(days %1);
 			        System.out.println(d);
@@ -116,13 +120,13 @@ public class Employee2Controller {
 			        	lateTime=(int)days;
 			        }
 			        attn.setLateTime(lateTime);//迟到的时间
+			        attenService.insertAttendance(attn);
 			        return("你迟到了"+lateTime+"小时");    
 				}
 				else {
+					attenService.insertAttendance(attn);
 					return("你没有迟到了，美好的一天，不是吗"); 
 				}
-				
-				
 		}
 		//打卡详情
 		public double getworkShift(){
@@ -148,4 +152,40 @@ public class Employee2Controller {
 			}//早上9点标准
 			return days;
 		}
+  /**
+   * 下班打卡
+   */
+		@ResponseBody
+		@RequestMapping("workOut")//// employee2/workIn //workOut
+		public String workOut(HttpSession session) {
+			System.out.println("下班打卡");
+		    Employees ey =(Employees) session.getAttribute("employee3");
+		    ArrayList<Attendance> attens = attenService.findAttendanceByEid(ey.getId());
+		   
+		    int id=0;
+			String str = null;
+			Attendance atten =new Attendance();
+			for (Attendance attendance : attens) {
+				//System.out.println(attendance);
+				if(attendance.getAid()>id) {
+					id= attendance.getAid();
+					atten = attendance;
+				}
+			}
+			System.out.println(atten);
+			System.out.println(atten.getCheckIn()!=null);
+			System.out.println(atten.getCheckIn()!=null&&atten.getCheckOut()==null);
+			
+			if(atten.getCheckIn()!=null&&atten.getCheckOut()==null) {
+				Date da = new Date ();
+				atten.setCheckOut(da);
+				int at= attenService.updateAttendance(atten);
+				System.out.println(at);
+				str="打卡成功";
+			}else{
+				str = "上班未打卡或下班已经打过";
+			}
+			return str;
+		}
+		
 }
