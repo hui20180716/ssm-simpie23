@@ -9,8 +9,8 @@ public class Employees {
 	private String password;
 	private Date createTime ;//入职时间
 	
-	private int cardId;//银行卡号
-	private int tel;//电话号码
+	private long cardId;//银行卡号
+	private long tel;//电话号码
 	private String sex;//性别
 	private String email;//邮箱
 	private String educal;//学历 
@@ -49,16 +49,16 @@ public class Employees {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-	public int getCardId() {
+	public long getCardId() {
 		return cardId;
 	}
-	public void setCardId(int cardId) {
+	public void setCardId(long cardId) {
 		this.cardId = cardId;
 	}
-	public int getTel() {
+	public long getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(long tel) {
 		this.tel = tel;
 	}
 	public String getSex() {
@@ -139,7 +139,7 @@ public class Employees {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Employees(int id, String name, String password, Date createTime, int cardId, int tel, String sex,
+	public Employees(int id, String name, String password, Date createTime, long cardId, long tel, String sex,
 			String email, String educal, int age, Dept dept, Position posi, Salary salary, Attendance atten,
 			Resume resume, Train train, SalaryAbout salaryAbout, Overtime overtime, int status) {
 		super();
@@ -167,13 +167,6 @@ public class Employees {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "Employees [id=" + id + ", name=" + name + ", password=" + password + ", createTime=" + createTime
-				+ ", cardId=" + cardId + ", tel=" + tel + ", sex=" + sex + ", email=" + email + ", educal=" + educal
-				+ ", age=" + age + ", dept=" + dept + ", posi=" + posi + ", salary=" + salary + ", atten=" + atten
-				+ ", resume=" + resume + ", train=" + train + ", salaryAbout=" + salaryAbout + ", overtime=" + overtime
-				+ ", status=" + status + "]";
-	}
+	
 	
 }

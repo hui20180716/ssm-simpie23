@@ -9,6 +9,8 @@ public class Attendance {
 	private Date data;//考勤日期
 	private Date checkIn;//上班打卡时间
 	private Date checkOut;//下班时间
+	private double lateTime ;//迟到时间
+	private  double overTime;//加班时间
 	public int getAid() {
 		return aid;
 	}
@@ -39,13 +41,27 @@ public class Attendance {
 	public void setCheckOut(Date checkOut) {
 		this.checkOut = checkOut;
 	}
-	public Attendance(int aid, Employees empl, Date data, Date checkIn, Date checkOut) {
+	public double getLateTime() {
+		return lateTime;
+	}
+	public void setLateTime(double lateTime) {
+		this.lateTime = lateTime;
+	}
+	public double getOverTime() {
+		return overTime;
+	}
+	public void setOverTime(double overTime) {
+		this.overTime = overTime;
+	}
+	public Attendance(int aid, Employees empl, Date data, Date checkIn, Date checkOut, double lateTime, double overTime) {
 		super();
 		this.aid = aid;
 		this.empl = empl;
 		this.data = data;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
+		this.lateTime = lateTime;
+		this.overTime = overTime;
 	}
 	public Attendance() {
 		super();
@@ -54,7 +70,7 @@ public class Attendance {
 	@Override
 	public String toString() {
 		return "Attendance [aid=" + aid + ", empl=" + empl + ", data=" + data + ", checkIn=" + checkIn + ", checkOut="
-				+ checkOut + "]";
+				+ checkOut + ", lateTime=" + lateTime + ", overTime=" + overTime + "]";
 	}
 	
 }

@@ -90,34 +90,62 @@ public class Employee2Controller {
 		@ResponseBody
 		@RequestMapping("workShift")//insert
 		public String workShift(HttpSession session) throws ParseException {
-				Employees ey =(Employees) session.getAttribute("employee3");
-				if(ey.getAtten().getAid()==0) {
-					Attendance a=new Attendance();
-					a.setEmpl(ey);
-					ey.setAtten(a);
-					Date da= new Date();
-					a.setData(da);
-				}
-				Date da= new Date();
-				ey.getAtten().setData(da);
-				String DateStr1 = " 9:00:00";
-				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				String das = dateFormat.format(da);
-				da = dateFormat.parse(das);//把当前时间转化为约束形式
-				DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd ");
-				 String dateString = dateFormat2.format(da);
-				 DateStr1= dateString +	DateStr1;
-				Date date= dateFormat.parse(DateStr1);//早上9点标准
-				int i = date.compareTo(da); 
+			System.out.println("上班打卡");
+		    Employees ey =(Employees) session.getAttribute("employee3");
+				//解决重复打卡、把考勤表中日期最大的表读出来，比对日期，日期相同则打过卡了，不同则没有打过卡
 				
-				if(i<0) {
-					System.out.println("你迟到了");
-				}else {
-					System.out.println("你没有迟到");
+			//考勤表每天创建一份，
+				/*
+				 如何判断是同一天  比对日期 上班卡只能打一次 下班卡也只能打一次 
+				 */
+				Attendance attn = new Attendance();//每天创建一张表
+				attn.setEmpl(ey);
+				Date da= new Date();//上班时间
+				attn.setCheckIn(da);
+				double days = getworkShift();
+				double lateTime=0; 
+				
+				if(days>0) {
+					double d=(days %1);
+			        System.out.println(d);
+			        if(d>0.5) {      	
+			        	lateTime=(int)days+1;
+			        }else if(0<d&&d<=0.5){ 
+			        	lateTime=(int)days+0.5;
+			        }else if(d==0){
+			        	lateTime=(int)days;
+			        }
+			        attn.setLateTime(lateTime);//迟到的时间
+			        return("你迟到了"+lateTime+"小时");    
 				}
-				System.out.println(i < 0); 
-
-				/*dateTime1.compareTo(dateTime2)*/
-				return null;
+				else {
+					return("你没有迟到了，美好的一天，不是吗"); 
+				}
+				
+				
+		}
+		//打卡详情
+		public double getworkShift(){
+			double days =0.00;
+			Date da= new Date();
+			String DateStr1 = " 9:00:00";
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String das = dateFormat.format(da);
+//			da = dateFormat.parse(das);//把当前时间转化为约束形式
+			DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd ");
+			 String dateString = dateFormat2.format(da);//模板
+			 DateStr1= dateString +	DateStr1;
+			Date date;
+			try {
+				date = dateFormat.parse(DateStr1);
+				 long diff =  da.getTime()-date.getTime() ;
+				 System.out.println("两个时间差"+diff);
+				 days = diff / ( 60 * 60 *1000.0 );
+			        System.out.println(days);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}//早上9点标准
+			return days;
 		}
 }

@@ -156,30 +156,70 @@ public class TouristDaoTest {
  @Test
  public  void getWeek3(){
 	 Date da = new Date();
-	 
-	 String DateStr2 = "2018-7-31 9:00:00";
-	 
+	 System.out.println(da);
+	 String DateStr1 = "2018-7-31 8:00:00";
+	 String DateStr2 = "2018-7-31 8:00:00";
 	 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	
 	 try {
 		Date dateTime2 = dateFormat.parse(DateStr2);
-        long diff = dateTime2.getTime() - da.getTime();
+		Date dateTime1 = dateFormat.parse(DateStr1);
+        long diff =  dateTime1.getTime()-dateTime2.getTime() ;
        System.out.println("两个时间差"+diff);
         // 将级别提升到天
-        double days = diff / ( 60 * 60  );
+        double days = diff / ( 60 * 60 *1000.0 );
         System.out.println(days);
-        double d=(-days %1000);
+        double d=(days %1);
         System.out.println(d);
-//        if(d>500) {
-//        	
-//        	System.out.println( -days/1000+"是吗");
-//        }else { 
-//        	System.out.println( days);
-//        }
+        if(d>0.5) {      	
+        	System.out.println((int)days/1+1+"是吗");
+        }else if(0<d&&d<=0.5){ 
+        	System.out.println( (int)days+0.5+"2");
+        }else if(d==0){
+        	System.out.println((int) days+"3");
+        }
 	} catch (ParseException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 
 	 }
+ @Test
+ public void get() {
+	 long a=1427633;
+	 double b=a/(60*60*1000.00);
+	 System.out.println(b);
+			 
+ }
+ @Test
+ public void get2() {
+ 
+	 Date da= new Date();
+	String DateStr1 = " 8:00:00";
+	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	String das = dateFormat.format(da);
+//	da = dateFormat.parse(das);//把当前时间转化为约束形式
+	DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd ");
+	 String dateString = dateFormat2.format(da);//模板
+	 DateStr1= dateString +	DateStr1;
+	Date date;
+	try {
+		date = dateFormat.parse(DateStr1);
+		 long diff =  da.getTime()-date.getTime() ;
+		 System.out.println("两个时间差"+diff);
+		 double days = diff / ( 60 * 60 *1000.0 );
+	        System.out.println(days);
+	        double d=(days %1);
+	        System.out.println(d);
+	        if(d>0.5) {      	
+	        	System.out.println((int)days/1+1+"是吗");
+	        }else if(0<d&&d<=0.5){ 
+	        	System.out.println( (int)days+0.5+" 2");
+	        }else if(d==0){
+	        	System.out.println((int) days+" 3");
+	        }
+	} catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}//早上9点标准
 }
+ }
